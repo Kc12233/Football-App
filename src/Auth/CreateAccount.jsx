@@ -1,28 +1,153 @@
 import "./CreateAccount.css";
-import { User, Mail, Lock, Camera, ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { User, Mail, Lock, Camera, ArrowLeft, Cone } from "lucide-react";
+import { data, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
+import axios from "axios";
+import Spinner from "../Loader/Spinner";
+
+
 
 const CreateAccount = () => {
 
     const navigate = useNavigate();
-
-    const inputRef = useRef();
+    const inputRef = useRef(null)
+    const username = useRef(null)
+    const password = useRef(null)
 
     const [image,setImage] = useState(null);
+    const [File , SetFile] = useState(null)
+    const  secureImage = useRef(null)
+    const [UserExisit , SetUserExist] = useState(false)
 
     const HandleImage = (e)=>{
 
         const file = e.target.files[0];
 
         if(file){
+            SetFile(file)
             setImage(URL.createObjectURL(file));
         }
 
     }
+    const [Error,SetError] =useState(false)
+    const [ErrorPass,SetErrorPass] =useState(false)
+    const [Loading,SetLoading]  = useState(false)
 
+
+    const HandelLogin =  async ()=>{
+       
+        const dataPerson = {
+         username : username.current.value ,
+         password : password.current.value ,
+         image
+        }
+
+
+
+        if(!image){
+            alert("Put image")
+            return
+        }
+        if(username?.current.value.length<5){
+           SetError(true)
+           setTimeout(() => {
+                SetError(false)
+           }, 3000);
+           return
+        }
+        if(username?.current.value.length>5){
+           SetError(false)
+        }
+        if(password?.current.value.length<8){
+           SetErrorPass(true)
+           setTimeout(() => {
+                SetErrorPass(false)
+           }, 3000);
+           return 
+        }
+        if(password?.current.value.length>=8){
+           SetErrorPass(false)
+
+        }
+
+        try{
+
+
+            SetLoading(true)
+            const formData = new FormData();
+            formData.append("file", File);
+            formData.append("upload_preset", 'football-app');
+           
+            const uploadResponse = await axios.post(
+                'https://api.cloudinary.com/v1_1/dfmdgsiid/upload',  
+                formData
+                );
+            
+            let  CloudinaryImage = uploadResponse.data.secure_url
+           
+            if(CloudinaryImage){
+                secureImage.current = CloudinaryImage
+                SetLoading(false)
+            }
+
+
+
+
+
+
+        }
+
+        catch(error){
+            SetLoading(false)
+            console.log("error cloudinary",error.message)
+        } 
+
+
+        try{
+            const CreatePerson  = await axios.post(`http://localhost:3000/create`,{
+                "user_name":dataPerson.username,
+                "user_img":  secureImage.current,
+                "user_password": dataPerson.password
+                }
+            
+            ,
+        
+        {
+             withCredentials: true,
+        })
+
+                SetLoading(true)
+  
+            
+            if(CreatePerson){
+                console.log(CreatePerson.data)
+                 SetUserExist(false)
+                 SetLoading(false)
+            } 
+
+
+        }catch(err){
+            SetLoading(false)
+            
+            if(err.message =="Request failed with status code 409"){
+                SetUserExist(true)
+               
+                   
+                
+            }
+
+        }
+
+        
+
+
+       
+    }
     return (
-        <div className="createAccount">
+        <> 
+        
+
+        <div className="createAccount"  >
 
             <div className="overlay"/>
 
@@ -39,7 +164,20 @@ const CreateAccount = () => {
 
                 <p>
                     Join Sky Sports and start your football journey.
+                    
                 </p>
+              
+
+                {
+
+                    UserExisit &&  
+
+                      <p style={{color:"red",fontFamily:"sans-serif",letterSpacing:"1px",fontSize:"23px"}}>
+                    Already exisit {username?.current?.value} 
+                </p>
+
+
+                }
 
                 <div
                     className="avatar"
@@ -70,34 +208,52 @@ const CreateAccount = () => {
                 <div className="inputBox">
                     <User size={20}/>
                     <input
+                       
                         type="text"
                         placeholder="Username"
+                          style={{color:Error && "red"}}
+                        ref={username}
                     />
                 </div>
 
-                <div className="inputBox">
+                {/* <div className="inputBox">
                     <Mail size={20}/>
                     <input
                         type="email"
                         placeholder="Email"
                     />
-                </div>
+                </div> */}
 
                 <div className="inputBox">
                     <Lock size={20}/>
                     <input
+                    style={{color : ErrorPass && "red"}}
                         type="password"
                         placeholder="Password"
+                        ref={password}
                     />
                 </div>
 
-                <button className="createBtn">
+                <button className="createBtn" onClick={()=>HandelLogin()}>
                     Create Account
                 </button>
 
             </div>
 
         </div>
+
+        {
+            Loading  &&  
+         <div className="div_spinner">
+            <Spinner/>
+         </div>  
+         
+
+        }   
+    
+        </>
+
+
     )
 }
 
