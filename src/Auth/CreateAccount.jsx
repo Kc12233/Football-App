@@ -1,14 +1,34 @@
 import "./CreateAccount.css";
-import { User, Mail, Lock, Camera, ArrowLeft, Cone } from "lucide-react";
+import { User, Mail, Lock, Camera, ArrowLeft, Cone, Percent } from "lucide-react";
 import { data, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import axios from "axios";
 import Spinner from "../Loader/Spinner";
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import { CustomUseContext } from "../useContext/UseContext";
+import axiosClient from "../axios/endPoint";
+import { useEffect } from "react";
+const APICloudinary = import.meta.env.VITE_API_KEY;
 const CreateAccount = () => {
 
+
+
+     
+
+
+
+
+
+
+
+
+
+    const notify = () =>   toast.success("Account Created!", {
+      theme: "colored",
+    })
+    const Nav = useNavigate()
+   const {Username , id  , dispatch}  =  CustomUseContext() 
+     
     const navigate = useNavigate();
     const inputRef = useRef(null)
     const username = useRef(null)
@@ -44,31 +64,31 @@ const CreateAccount = () => {
 
 
 
-        if(!image){
-            alert("Put image")
-            return
-        }
-        if(username?.current.value.length<5){
-           SetError(true)
-           setTimeout(() => {
-                SetError(false)
-           }, 3000);
-           return
-        }
-        if(username?.current.value.length>5){
-           SetError(false)
-        }
-        if(password?.current.value.length<8){
-           SetErrorPass(true)
-           setTimeout(() => {
-                SetErrorPass(false)
-           }, 3000);
-           return 
-        }
-        if(password?.current.value.length>=8){
-           SetErrorPass(false)
+        // if(!image){
+        //     alert("Put image")
+        //     return
+        // }
+        // if(username?.current.value.length<5){
+        //    SetError(true)
+        //    setTimeout(() => {
+        //         SetError(false)
+        //    }, 3000);
+        //    return
+        // }
+        // if(username?.current.value.length>5){
+        //    SetError(false)
+        // }
+        // if(password?.current.value.length<8){
+        //    SetErrorPass(true)
+        //    setTimeout(() => {
+        //         SetErrorPass(false)
+        //    }, 3000);
+        //    return 
+        // }
+        // if(password?.current.value.length>=8){
+        //    SetErrorPass(false)
 
-        }
+        // }
 
         try{
 
@@ -79,10 +99,10 @@ const CreateAccount = () => {
             formData.append("upload_preset", 'football-app');
            
             const uploadResponse = await axios.post(
-                'https://api.cloudinary.com/v1_1/dfmdgsiid/upload',  
+                APICloudinary,  
                 formData
                 );
-            
+         
             let  CloudinaryImage = uploadResponse.data.secure_url
            
             if(CloudinaryImage){
@@ -104,7 +124,7 @@ const CreateAccount = () => {
 
 
         try{
-            const CreatePerson  = await axios.post(`http://localhost:3000/create`,{
+            const CreatePerson  = await axiosClient.post(`/create`,{
                 "user_name":dataPerson.username,
                 "user_img":  secureImage.current,
                 "user_password": dataPerson.password
@@ -120,9 +140,33 @@ const CreateAccount = () => {
   
             
             if(CreatePerson){
-                console.log(CreatePerson.data)
+                 const {id, user_name , img}=  CreatePerson.data.user
+                 dispatch({
+                    type:"ADD_ID",
+                    payload :{
+                        id , 
+                        UserName : user_name,
+                        img 
+
+                    }
+                 })
+                 notify()
                  SetUserExist(false)
                  SetLoading(false)
+                 Nav("/requestTest")
+
+
+               
+
+ 
+
+
+
+
+
+
+
+
             } 
 
 
@@ -143,9 +187,25 @@ const CreateAccount = () => {
 
        
     }
+
+
+    useEffect(()=>{
+        const HandelRefeshPage  =(e)=>{
+            e.preventDefault()
+ 
+            console.log("the user refreh the page")
+
+        }
+        
+
+        window.addEventListener("beforeunload",HandelRefeshPage)
+        return()=>{
+            window.removeEventListener("beforeunload",HandelRefeshPage)
+        }
+    },[])
     return (
         <> 
-        
+        <ToastContainer />
 
         <div className="createAccount"  >
 

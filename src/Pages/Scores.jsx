@@ -77,7 +77,7 @@ const Scores = () => {
           <div className="avatar-user">
           <span className="popup2"></span>
 
-            <img src="/testpic/man.PNG"/>
+            <img src="/testpic/man2.png"/>
               
 
           </div>

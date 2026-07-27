@@ -1,13 +1,39 @@
 import React from "react";
 import "./LoginYourAccount.css";
-import { Mail, Lock, LogIn } from "lucide-react";
+import { Mail, Lock, LogIn, AwardIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { CustomUseContext } from "../useContext/UseContext";
+import { useEffect } from "react";
+import axiosClient from "../axios/endPoint";
+
 const LoginYourAccount = () => {
     const Nav = useNavigate()
-    const HandelLogin = ()=>{
-        Nav("/MyTeam")
+    const {Username , id ,dispatch}  =  CustomUseContext() 
+    const HandelLogin = async()=>{
+       
+
+       try{
+        const res = await axiosClient.get("/login",{},{
+          withCredentials:true
+        })
+        if(res.data){
+          dispatch({
+            type : "ADD_ID",
+            payload :{
+              id :  res.data.id ,
+              UserName :res.data.user_name,
+              
+            }
+          })
+             Nav("/requestTest") 
+        }
+ 
+       }catch(err){
+         console.log(err.response.data.message);
+       }
 
     }
+ 
   return (
     <div className="container_login">
 
@@ -33,7 +59,7 @@ const LoginYourAccount = () => {
             type="email"
             placeholder="Email Address"
           />
-        </div>
+        </div>  
 
         <div className="input_box">
           <Lock size={20} />

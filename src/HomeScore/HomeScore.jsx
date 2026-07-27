@@ -74,18 +74,18 @@ const HomeScore = () => {
                  
 
                       <NavLink 
-                        to="matches"
+                        to="shorts"
                         className={({ isActive }) =>
                             isActive ? "active-link" : "normal-link"
                         }
                     
                     >
-                   <img onClick={()=>HandelVibrate()}  src='/myTeamIcon/stade.svg' />
+                   <img onClick={()=>HandelVibrate()}  src='/myTeamIcon/shorts.png' />
 
                 
                          
                     </NavLink>
-                     <span>matches</span>
+                     <span>shorts</span>
 
 
                 </div>

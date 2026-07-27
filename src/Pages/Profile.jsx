@@ -109,7 +109,7 @@ const Nav = useNavigate()
                    <div className="card_session">
                 <div className="left_card_session">
                     <img src='/profile_icon/calendar.svg'/>
-                    <h1>My Booking</h1>
+                    <h1>Memories</h1>
                  </div>
                 <div className="right_card_session">  <img src='/myTeamIcon/view2.svg'/></div>
             </div>

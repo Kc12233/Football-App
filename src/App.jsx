@@ -3,9 +3,9 @@ import {  Route as Path , Routes  as Routers } from 'react-router-dom'
 import Login from './Auth/Login'
 import MyTeam from './MyTeam/MyTeam'
  
-import OtherThing from './Pages/Matchs'
+import OtherThing from './Pages/Shortes'
 import Scores from './Pages/Scores'
-import Matchs from './Pages/Matchs'
+import Matchs from './Pages/Shortes'
 import HomeScore from './HomeScore/HomeScore'
 import News from './SocialMedia/News'
 import Profile from './Pages/Profile'
@@ -19,13 +19,21 @@ import Achievements from './Pages/Achievements'
 import All from './Component/All'
 import Unlocked from './Component/Unlocked'
 import Locked from './Component/Locked'
+import UseContext from './useContext/UseContext'
+import TestRequest from './Pages/TestRequest'
+import Shortes from './Pages/Shortes'
  
 
 const App = () => {
   return (
      <> 
+      <UseContext>
      
      <Routers>
+
+
+
+    
       <Path    path={'/login'} element={<Login/>}/>
       <Path    path={'/myTeam'} element={<MyTeam/>}/>
       <Path    path={'/CreateAccount'} element={<CreateAccount/>}/>
@@ -34,6 +42,7 @@ const App = () => {
       <Path    path={'/LoginAccount'} element={<LoginYourAccount/>}/>
       <Path    path={'/FinshedMatchComp'} element={<FinshedMatchComp/>}/>
       <Path    path={'/CreateMatche'} element={<CreateMatch/>}/>
+      <Path    path='/requestTest' element={<TestRequest/>}/>
 
 
 
@@ -44,7 +53,7 @@ const App = () => {
 
         <Path index element={<Scores/>} />
         <Path  path="Scores" element={<Scores />} />
-        <Path path="matches" element={<Matchs />} />
+        <Path path="shorts" element={<Shortes />} />
         <Path path="news" element={<News />} />
         <Path path="profile" element={<Profile />} />
       </Path>
@@ -75,8 +84,10 @@ const App = () => {
 
 
 
-
      </Routers>
+
+  </UseContext>
+
      </>
   )
 }
