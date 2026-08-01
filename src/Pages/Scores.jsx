@@ -6,6 +6,7 @@ import axios from "axios"
 import  use from "react"
 import { Plus } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { CustomUseContext } from '../useContext/UseContext.jsx'
 const Scores = () => {
  const [card,SetCard] = useState([
 
@@ -43,6 +44,17 @@ const Scores = () => {
  const [off,Setoff] = useState(false)
 
  const Nav = useNavigate()
+
+ 
+    const {Username , id  , dispatch}  =  CustomUseContext()  
+ 
+    useEffect(()=>{
+     console.log(Username , id , "<== this is the fucking data score js")
+    },[])
+ 
+
+
+    
   return (
 
       <> 

@@ -1,4 +1,4 @@
-import { useContext , useReducer  } from "react"
+import { useContext , useEffect, useReducer  } from "react"
 import { reducer } from "./reducer"
 import { createContext } from "react"
 import axios from "axios"
@@ -15,6 +15,8 @@ export const useGlobalContext = createContext()
 
 const UseContext = ({children}) => {
     const [state,dispatch] = useReducer(reducer , initialState)
+  
+    
   return (
      <>
      

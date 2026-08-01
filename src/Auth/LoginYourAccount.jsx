@@ -1,40 +1,104 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginYourAccount.css";
-import { Mail, Lock, LogIn, AwardIcon } from "lucide-react";
+import { Mail, Lock, LogIn, AwardIcon, User, LampFloor } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CustomUseContext } from "../useContext/UseContext";
 import { useEffect } from "react";
 import axiosClient from "../axios/endPoint";
+import LoaderLogin from "../Component/LoaderLogin";
+ 
+    
+
+
 
 const LoginYourAccount = () => {
+
+  
     const Nav = useNavigate()
     const {Username , id ,dispatch}  =  CustomUseContext() 
-    const HandelLogin = async()=>{
-       
+    const [Loading,setLoading] = useState(false)
+    const [LoadingUsP,setLoadingUsp] = useState(false)
+    
+     
 
-       try{
-        const res = await axiosClient.get("/login",{},{
-          withCredentials:true
+    const [State , SetState] = useState({
+       username: '',
+       password : ''
+    })
+
+    const HandelLogin  = async () => {
+     
+      try{
+        if(!State.username ||!State.password){
+
+          return 
+        }
+
+         setLoading(true)
+         const {username , password} = State
+         
+         const LoginRequest = await axiosClient.post("/login",{
+          Username:username,
+          password:password},{
+            withCredentials:true
         })
-        if(res.data){
+
+        if(LoginRequest.statusText ==="OK"){
+ 
+           
           dispatch({
             type : "ADD_ID",
             payload :{
-              id :  res.data.id ,
-              UserName :res.data.user_name,
+              id : LoginRequest.data.info.id ,
+              UserName :LoginRequest.data.info.username,
+              img : LoginRequest.data.info.img
               
             }
           })
-             Nav("/requestTest") 
+          console.log("sucess login")
+           
+          Nav("/testInterceptor")
+          setLoading(false)
         }
- 
-       }catch(err){
-         console.log(err.response.data.message);
-       }
 
+
+      }
+      
+      catch(err){
+        console.log(err.response)
+        setLoading(false)
+        if(err.response){
+          if(err.response.data.message=="username or password incorrect"){
+            setLoading(false)
+          
+            setLoadingUsp(true)
+            setTimeout(() => {
+              setLoadingUsp(false)
+              
+            }, 3000);
+          }
+        }
+       
+      }
+
+  
+
+    
     }
  
+ 
   return (
+
+    <>
+
+    {
+      Loading && 
+    <LoaderLogin/>
+    }
+    
+  
+
+    
     <div className="container_login">
 
       <div className="login_card">
@@ -49,15 +113,26 @@ const LoginYourAccount = () => {
 
           <p>
             Login to continue your football journey.
+
           </p>
+            {
+              LoadingUsP &&     <div className="errorPasswordIncorret">
+                  user name or password incorrect
+                </div>
+            }
 
         </div>
 
         <div className="input_box">
-          <Mail size={20} />
+          <User size={20} />
           <input
-            type="email"
-            placeholder="Email Address"
+            type="text"
+            placeholder="user name"
+            onInput={(e)=>SetState({
+              ...State ,
+              username : e.target.value
+
+            })}
           />
         </div>  
 
@@ -66,6 +141,10 @@ const LoginYourAccount = () => {
           <input
             type="password"
             placeholder="Password"
+            onInput={(e)=>SetState({
+              ...State , 
+              password : e.target.value
+            })}
           />
         </div>
 
@@ -76,6 +155,8 @@ const LoginYourAccount = () => {
       </div>
 
     </div>
+
+      </>
   );
 };
 

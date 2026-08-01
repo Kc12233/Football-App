@@ -1,11 +1,168 @@
  
 
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
+import { RefreshTheToken } from "../RefreshToken/RefrshTokenL";
+
 const EndPointUrl =import.meta.env.VITE_URL
+
 let  axiosClient = axios.create({
   baseURL: EndPointUrl,
+  withCredentials:true
   
 });
 
+ 
+let failedRequests = []
+ 
+let isRefreshing = false
 
-export default  axiosClient
+let logoutButtonTitle = "Log-out"
+let missingTokenErrorMessage = "Token missing"
+
+ 
+
+
+
+
+
+const processQueue = (error = null) => {
+  failedRequests.forEach((request) => {
+
+    if (error) {
+      request.reject(error);
+    } else {
+      axiosClient(request.conf)
+        .then(request.resolve)
+        .catch(request.reject);
+    }
+
+  });
+
+  failedRequests = [];
+};
+
+
+
+
+
+
+axiosClient.interceptors.response.use(
+ 
+  async(response) => {
+   
+    
+
+    return response;
+  },
+  async (error) => {
+   
+    const origingalRequest = error.config
+
+      
+
+
+
+
+
+    let message  = error?.response.data.message
+  
+   
+    if(message =="Invalid or expired token" && !origingalRequest._retry){
+      origingalRequest._retry = true
+
+ 
+
+      
+      
+        if(isRefreshing){
+          return new Promise((resolve,reject)=>{
+              failedRequests.push({
+                  conf : origingalRequest , 
+                  resolve,
+                  reject
+              })
+          })
+        }
+ 
+
+        isRefreshing = true
+
+        try{
+          await RefreshTheToken()
+      
+          processQueue()
+          
+          return axiosClient(origingalRequest)  
+
+
+
+          
+          
+        }
+        catch(refreshError){
+        processQueue(refreshError)
+        location.href = "/login";
+
+
+        return Promise.reject(refreshError);
+        }
+
+ 
+
+        finally{
+          isRefreshing = false
+        }
+
+
+
+     
+
+           
+
+      
+
+           
+
+         
+           
+       
+
+        
+           
+       
+
+    }
+      
+   if(message===logoutButtonTitle){
+        
+ 
+          
+
+        location.href = "/login"
+        return Promise.reject(error)
+    }
+
+   if(message ===missingTokenErrorMessage){
+      
+      location.href = "/login"
+       return Promise.reject(error)
+    }
+     
+
+
+ 
+   
+
+
+    return Promise.reject(error);
+  }
+);
+
+export default axiosClient;
+
+
+
+
+
+ 

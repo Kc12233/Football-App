@@ -140,6 +140,7 @@ const CreateAccount = () => {
   
             
             if(CreatePerson){
+                console.log(CreatePerson ," <== creat person")
                  const {id, user_name , img}=  CreatePerson.data.user
                  dispatch({
                     type:"ADD_ID",
@@ -150,10 +151,15 @@ const CreateAccount = () => {
 
                     }
                  })
+
+                 
+                  
                  notify()
                  SetUserExist(false)
                  SetLoading(false)
-                 Nav("/requestTest")
+               
+                 Nav("/myTeam")
+
 
 
                

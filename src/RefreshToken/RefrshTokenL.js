@@ -1,10 +1,10 @@
-import axios from "axios"
+import axiosClient from "../axios/endPoint"
  
 export const RefreshTheToken  =  async ()=>{
     
     
     try{
-        const RefreshTokenUrl =  await axios.post("http://localhost:3000/ReinitializingToken",{},{
+        const RefreshTokenUrl =  await axiosClient.post("/ReinitializingToken",{},{
             withCredentials:true
         })
         return RefreshTokenUrl

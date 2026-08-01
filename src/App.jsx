@@ -22,6 +22,7 @@ import Locked from './Component/Locked'
 import UseContext from './useContext/UseContext'
 import TestRequest from './Pages/TestRequest'
 import Shortes from './Pages/Shortes'
+import TestInterceptor from './Pages/TestInterceptor'
  
 
 const App = () => {
@@ -44,6 +45,8 @@ const App = () => {
       <Path    path={'/CreateMatche'} element={<CreateMatch/>}/>
       <Path    path='/requestTest' element={<TestRequest/>}/>
 
+      
+      <Path    path='/testInterceptor' element={<TestInterceptor/>}/>
 
 
 
