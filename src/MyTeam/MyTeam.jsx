@@ -3,9 +3,10 @@ import "./MyTeam.css"
 import { useNavigate } from 'react-router-dom'
 import Card from '../Component/Card'
 import { Plus, X } from 'lucide-react'
-import { CustomUseContext } from '../useContext/UseContext'
+import { useAuth } from '../useContext/UseContext'
 import { RefreshTheToken } from '../RefreshToken/RefrshTokenL'
 import axiosClient from '../axios/endPoint'
+import socket from '../socketClient/socket'
 
 const MyTeam = () => {
     
@@ -13,111 +14,32 @@ const MyTeam = () => {
     const HandelReturn = () =>{
         Nav("/login")
     }
+
+    
     const [off,SetOff] = useState(true)
-    const {Username , id ,img , dispatch}  =  CustomUseContext()  
+    const {Username , id ,img , dispatch}  =  useAuth()  
 
 
- // make this like director
+ 
   
   const testRequest = async () => {
 
 
-      try {
-         const data = await axiosClient.post("/test", {}, { withCredentials: true })
+       
+         const data = await axiosClient.post("/test")
 
 
-         console.log(data.data.message)
+         console.log(data)
 
-      } catch (err) {
-        console.log(err.message)
-         
-         if (err?.response?.data.message == "Invalid or expired token") {
-
-            const r = await RefreshTheToken()
-            console.log(r, "gff")
-            const RefrsrhThedata = await axiosClient.post("/test", {}, { withCredentials: true })
-            console.log(RefrsrhThedata , "this after we refresh the toke")
-
-            
-            if (r?.message == "Your Refresh Token End up You should login ") {
-
-               Nav("/login")
-               return
-            }
-
-
-            if (r) {
-
-               dispatch({
-                  type: "ADD_ID",
-                  payload: {
-                     id: r.data.data.id,
-                     UserName: r.data.data.user_name,
-                     img: r.data.data.img
-
-                  }
-               })
-
-
-            }
-
-
-         }
+    
 
 
 
-
-
-      }
+ 
    }
 
    
-   useEffect(() => {
-        console.log("The Componet Mount")
-        const RenderTheDataWhenComponentRefresh = async () => {
-           try {
-              if (!Username || !id || !img) {
-                 console.log("Should be Render The data")
-  
-                 const r = await RefreshTheToken()
-                 console.log(r, "<= haaa")
-  
-               if (r?.message == "Your Refresh Token End up You should login " ||
-                   r?.message == "missing id" ||
-                   r?.message === "we dont found you"
-                  ) {
-                    Nav("/login")
-                    return
-                 }
-  
-  
-  
-  
-                 if (r) {
-                    dispatch({
-                       type: "ADD_ID",
-                       payload: {
-                          id: r.data.data.id,
-                          UserName: r.data.data.user_name,
-                          img: r.data.data.img
-  
-                       }
-                    })
-                 }
-  
-  
-  
-              }
-           }
-           catch (error) {
-              console.log(error.message)
-           }
-        }
-  
-        RenderTheDataWhenComponentRefresh()
-     }, [])
-    
- 
+
 
 
 
@@ -134,7 +56,7 @@ const MyTeam = () => {
                 <h1 onClick={()=>console.log("my id",id)}>My Team</h1>
             </div>
             <div className="seconde-nav-option">
-                 <img src="./myTeamIcon/search.svg" onClick={()=>testRequest()} alt="" />
+                 <img src="./myTeamIcon/search.svg" onPointerUp={()=>testRequest()} alt="" />
                  <img src="./myTeamIcon/Option.svg" alt="" />
             </div>
         </div>

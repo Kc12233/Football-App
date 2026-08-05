@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./LoginYourAccount.css";
 import { Mail, Lock, LogIn, AwardIcon, User, LampFloor } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { CustomUseContext } from "../useContext/UseContext";
+import { useAuth } from "../useContext/UseContext";
 import { useEffect } from "react";
 import axiosClient from "../axios/endPoint";
 import LoaderLogin from "../Component/LoaderLogin";
- 
+import socket from "../socketClient/socket";
     
 
 
@@ -15,7 +15,7 @@ const LoginYourAccount = () => {
 
   
     const Nav = useNavigate()
-    const {Username , id ,dispatch}  =  CustomUseContext() 
+    const {Username , id ,dispatch}  =  useAuth() 
     const [Loading,setLoading] = useState(false)
     const [LoadingUsP,setLoadingUsp] = useState(false)
     
@@ -45,7 +45,7 @@ const LoginYourAccount = () => {
 
         if(LoginRequest.statusText ==="OK"){
  
-           
+         localStorage.setItem("_login","true")
           dispatch({
             type : "ADD_ID",
             payload :{
@@ -56,8 +56,10 @@ const LoginYourAccount = () => {
             }
           })
           console.log("sucess login")
-           
-          Nav("/testInterceptor")
+     
+          socket.connect()
+          
+          Nav("/myTeam")
           setLoading(false)
         }
 

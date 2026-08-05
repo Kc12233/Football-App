@@ -1,13 +1,13 @@
 import React from 'react'
 import axios from "axios"
-import { CustomUseContext } from '../useContext/UseContext'
+import { useAuth } from '../useContext/UseContext'
 import { Cone, User } from 'lucide-react'
 import { RefreshTheToken } from '../RefreshToken/RefrshTokenL'
 import { useEffect } from 'react'
 import axiosClient from '../axios/endPoint'
 import { useNavigate } from 'react-router-dom'
 const TestRequest = () => {
-   const { Username, id, img, dispatch } = CustomUseContext()
+   const { Username, id, img, dispatch } = useAuth()
    const Nav = useNavigate()
 
 

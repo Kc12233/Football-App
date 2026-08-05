@@ -4,9 +4,9 @@ import CardInfo from "../Component/CardInfo.jsx"
 import FinshedMatches  from "../Component/FinshedMatches.jsx"
 import axios from "axios"
 import  use from "react"
-import { Plus } from 'lucide-react'
+import { Cone, Plus, User } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { CustomUseContext } from '../useContext/UseContext.jsx'
+import { useAuth } from '../useContext/UseContext.jsx'
 const Scores = () => {
  const [card,SetCard] = useState([
 
@@ -46,12 +46,17 @@ const Scores = () => {
  const Nav = useNavigate()
 
  
-    const {Username , id  , dispatch}  =  CustomUseContext()  
- 
+    const {Username , id ,img , dispatch}  =  useAuth()  
+    
     useEffect(()=>{
-     console.log(Username , id , "<== this is the fucking data score js")
+      if(Username && id && img){
+        console.log(Username , id , img)
+      }
+
+      console.log("hey this Component Mount")
     },[])
- 
+
+    
 
 
     
@@ -70,7 +75,7 @@ const Scores = () => {
            <img src="/navbaricon/Koura.png"  alt="Ghaith"/>  
           </div>
   
-          <h1>Koura</h1>
+          <h1 onClick={()=>console.log(Username , id )}>Koura</h1>
         </div>
 
 
@@ -89,7 +94,7 @@ const Scores = () => {
           <div className="avatar-user">
           <span className="popup2"></span>
 
-            <img src="/testpic/man2.png"/>
+            <img src={img ? img : "/testpic/man2."}/>
               
 
           </div>
@@ -111,7 +116,7 @@ const Scores = () => {
 
              
              
-             :  <p className="description">Welcome back ,Ghiath 👋  </p> 
+             :  <p className="description">Welcome back ,{Username&& Username} 👋  </p> 
           }
          
           <h1 className="description-mem">Play football.</h1>

@@ -2,12 +2,29 @@ import React from 'react'
 import {  Route as Path , Routes  as Routers } from 'react-router-dom'
 import Login from './Auth/Login'
 import MyTeam from './MyTeam/MyTeam'
+
+const LazyMyTeam = React.lazy(()=>import("./MyTeam/MyTeam"))
  
 import OtherThing from './Pages/Shortes'
+const LazyOtherThing = React.lazy(()=>import("./Pages/Shortes"))
+
 import Scores from './Pages/Scores'
+const LazyScores = React.lazy(()=>import("./Pages/Scores"))
+
 import Matchs from './Pages/Shortes'
+
+const LazyMatchs = React.lazy(()=>import("./Pages/Shortes"))
+
 import HomeScore from './HomeScore/HomeScore'
+
+const LazyHomeScore = React.lazy(()=>import("./HomeScore/HomeScore"))
+
+
 import News from './SocialMedia/News'
+
+const LazyNews= React.lazy(()=>import("./SocialMedia/News"))
+
+
 import Profile from './Pages/Profile'
 import CreateAccount from './Auth/CreateAccount'
 import JoinSession from './Pages/JoinSession'
@@ -23,15 +40,22 @@ import UseContext from './useContext/UseContext'
 import TestRequest from './Pages/TestRequest'
 import Shortes from './Pages/Shortes'
 import TestInterceptor from './Pages/TestInterceptor'
+import SocketProvider from './socketClient/SocketProvider'
  
+
+
+
+
+
+
 
 const App = () => {
   return (
      <> 
-      <UseContext>
+ 
+    <SocketProvider>   
      
      <Routers>
-
 
 
     
@@ -44,16 +68,9 @@ const App = () => {
       <Path    path={'/FinshedMatchComp'} element={<FinshedMatchComp/>}/>
       <Path    path={'/CreateMatche'} element={<CreateMatch/>}/>
       <Path    path='/requestTest' element={<TestRequest/>}/>
-
-      
       <Path    path='/testInterceptor' element={<TestInterceptor/>}/>
 
-
-
-
-
       <Path    path={'/Home'} element={<HomeScore/>}>
-
         <Path index element={<Scores/>} />
         <Path  path="Scores" element={<Scores />} />
         <Path path="shorts" element={<Shortes />} />
@@ -61,19 +78,11 @@ const App = () => {
         <Path path="profile" element={<Profile />} />
       </Path>
 
-
-
-
-
-     <Path    path={'/achievements'} element={<Achievements/>}>
-       
-              <Path index element={<All />} />
-              <Path  path="all" element={<All />} />
-              <Path  path="Unlocked" element={<Unlocked />} />
-              <Path  path="Locked" element={<Locked />} />
-                
-
-
+      <Path    path={'/achievements'} element={<Achievements/>}>
+                <Path index element={<All />} />
+                <Path  path="all" element={<All />} />
+                <Path  path="Unlocked" element={<Unlocked />} />
+                <Path  path="Locked" element={<Locked />} />
       </Path>
 
 
@@ -82,14 +91,14 @@ const App = () => {
 
 
 
-
-
+    
 
 
 
      </Routers>
 
-  </UseContext>
+ 
+</SocketProvider>
 
      </>
   )

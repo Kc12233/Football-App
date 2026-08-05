@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import Spinner from "../Loader/Spinner";
 import { ToastContainer, toast } from 'react-toastify';
-import { CustomUseContext } from "../useContext/UseContext";
+import { useAuth } from "../useContext/UseContext";
 import axiosClient from "../axios/endPoint";
 import { useEffect } from "react";
 const APICloudinary = import.meta.env.VITE_API_KEY;
@@ -27,7 +27,7 @@ const CreateAccount = () => {
       theme: "colored",
     })
     const Nav = useNavigate()
-   const {Username , id  , dispatch}  =  CustomUseContext() 
+   const {Username , id  , dispatch}  =  useAuth() 
      
     const navigate = useNavigate();
     const inputRef = useRef(null)

@@ -3,7 +3,8 @@
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { RefreshTheToken } from "../RefreshToken/RefrshTokenL";
-
+import socket from "../socketClient/socket";
+ 
 const EndPointUrl =import.meta.env.VITE_URL
 
 let  axiosClient = axios.create({
@@ -82,18 +83,21 @@ axiosClient.interceptors.response.use(
                   resolve,
                   reject
               })
+
+               
           })
         }
  
 
         isRefreshing = true
+        
 
         try{
           await RefreshTheToken()
-      
+          socket.disconnect().connect()
           processQueue()
-          
-          return axiosClient(origingalRequest)  
+   
+          return axiosClient(origingalRequest)
 
 
 
@@ -102,16 +106,17 @@ axiosClient.interceptors.response.use(
         }
         catch(refreshError){
         processQueue(refreshError)
-        location.href = "/login";
-
-
-        return Promise.reject(refreshError);
+        throw Error("expired Refresh token")
+    
+      
+ 
         }
 
  
 
         finally{
           isRefreshing = false
+        
         }
 
 
@@ -137,16 +142,17 @@ axiosClient.interceptors.response.use(
    if(message===logoutButtonTitle){
         
  
-          
-
-        location.href = "/login"
-        return Promise.reject(error)
+     
+        throw Error("expired Refresh token")
+       
     }
 
    if(message ===missingTokenErrorMessage){
       
-      location.href = "/login"
-       return Promise.reject(error)
+       throw Error("missing Token")
+      
+    
+    
     }
      
 
