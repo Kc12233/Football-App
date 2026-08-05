@@ -4,6 +4,8 @@ import { createContext } from "react"
 import axios from "axios"
 import axiosClient from "../axios/endPoint"
 import { useNavigate } from "react-router-dom"
+import socket from "../socketClient/socket"
+import { RefreshTheToken } from "../RefreshToken/RefrshTokenL"
 
 
 const initialState = {
@@ -18,8 +20,40 @@ export const useGlobalContext = createContext()
 const UseContext = ({children}) => {
     const [state,dispatch] = useReducer(reducer , initialState)
     const Nav = useNavigate()
-    const isLogin = JSON.parse(localStorage.getItem("_login"))
    
+    useEffect(()=>{
+
+      const HandelTryConnect   = async(data)=>{
+         if(data.reason==="TOKEN_EXPIRED"){
+
+
+ 
+            const res =   await RefreshTheToken()
+            if(res.status===200){
+               socket.disconnect().connect()
+               console.log("we try to connect again")
+            }
+            else{
+               Nav("/login")
+            }
+
+
+         }
+
+  
+
+      }
+      socket.on("auth_error",HandelTryConnect) 
+
+
+      return()=>{
+         socket.off("auth_error",HandelTryConnect)
+      }
+
+    },[])
+
+
+
 
     useEffect(() => {
        
@@ -29,11 +63,14 @@ const UseContext = ({children}) => {
          try{
 
 
-               if (!state.UserName || !state.id || !state.img &&  isLogin) {
+               if (!state.UserName || !state.id || !state.img ) {
                   
   
                  const {data}= await axiosClient.get("/getmydata")
                  console.log(data)
+                 if(data){
+                  Nav("/myTeam")
+                 }
                 
    
   

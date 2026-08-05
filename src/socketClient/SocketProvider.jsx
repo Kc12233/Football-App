@@ -1,20 +1,52 @@
 import { useEffect } from "react";
 import socket from "./socket";
 import { useAuth } from "../useContext/UseContext";
+import axiosClient from "../axios/endPoint";
  
-const SocketProvider = ({ children }) => {
-  const isLogin = JSON.parse(localStorage.getItem("_login"))
- 
- 
+const SocketProvider =  ({ children }) => {
+  
 
-  useEffect(() => {
-    if(!isLogin) return 
-    socket.connect();
+   useEffect(()=>{
+    
+    const checkUserExist = async()=>{
+      try{
+      const user = await axiosClient.get("/getmydata")
+      
+      if(user.status===200){
+        socket.connect()
+      }
+      }
+      catch(err){
+         if(err.message == "missing Token"){
+          console.log("nothing gonna work")
+          return 
 
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+         }
+      }
+
+   }
+
+   checkUserExist()
+
+
+   return()=>{
+    socket.disconnect()
+   }
+   },[])
+
+
+
+  // useEffect( () => {
+
+
+  
+   
+  //   socket.connect();
+
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
   return <>{children}</>;
 };

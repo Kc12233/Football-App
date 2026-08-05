@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./MyTeam.css"
 import { useNavigate } from 'react-router-dom'
 import Card from '../Component/Card'
-import { Plus, X } from 'lucide-react'
+import { Cone, Plus, X } from 'lucide-react'
 import { useAuth } from '../useContext/UseContext'
 import { RefreshTheToken } from '../RefreshToken/RefrshTokenL'
 import axiosClient from '../axios/endPoint'
@@ -19,9 +19,8 @@ const MyTeam = () => {
     const [off,SetOff] = useState(true)
     const {Username , id ,img , dispatch}  =  useAuth()  
 
-
  
-  
+ 
   const testRequest = async () => {
 
 
