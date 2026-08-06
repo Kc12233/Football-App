@@ -21,6 +21,9 @@ const UseContext = ({children}) => {
     const [state,dispatch] = useReducer(reducer , initialState)
     const Nav = useNavigate()
    
+
+
+    
     useEffect(()=>{
 
       const HandelTryConnect   = async(data)=>{
@@ -34,6 +37,9 @@ const UseContext = ({children}) => {
                console.log("we try to connect again")
             }
             else{
+         
+               await axiosClient.post("/api/deleteCookies")
+               
                Nav("/login")
             }
 
@@ -51,10 +57,6 @@ const UseContext = ({children}) => {
       }
 
     },[])
-
-
-
-
     useEffect(() => {
        
         const initializeUserDataIFweNeedIt  = async () => {
@@ -95,6 +97,7 @@ const UseContext = ({children}) => {
           
             if(err.message==="missing Token"  ||err.message =="expired Refresh token")
             {
+               await axiosClient.post("/api/deleteCookies")
                Nav("/login")
             }
          }

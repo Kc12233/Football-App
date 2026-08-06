@@ -9,6 +9,9 @@ body{
 }
  
 .myTeam{
+    position: absolute;
+    top: 0;
+    left: 0;
        width: 100%;
         height: 100dvh;
           background: radial-gradient(
@@ -28,17 +31,19 @@ body{
         height: 8vh;
 
    
-   background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+            background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.15);
- 
+
         
 
     }
     .nav-option{
          display: flex;
+      
+           
     }
     .first-nav-option{
  
@@ -103,7 +108,7 @@ body{
 
     .Session-groups{
        
-       
+ 
          margin-top: 2px;
        
          height: 85vh;
@@ -117,8 +122,7 @@ body{
          flex-wrap: wrap;
       
          
-         gap: 10px;
-
+        gap: 10px;
          
          
        
@@ -366,22 +370,36 @@ body{
     }
 
     .navbar-header{
-        background-color: rgb(0,0,0,0.3);
-        backdrop-filter: blur(3px);
-        height: 8vh;
-
    
-   background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+            backdrop-filter: blur(3px);
+            height: 8vh;
+            background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.15);
- 
+            
         
 
     }
     .nav-option{
          display: flex;
+         width: 100%;
+         background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+         border-radius: 16px;
+         /* border: 1px solid rgba(255, 255, 255, 0.15); */
+         border-radius: 10px;
+          background: #0f0f0f;
+            background: linear-gradient(
+                135deg,
+                #000000 0%,
+                #111111 50%,
+                #39ff14 100%
+            );
+         
+      
     }
     .first-nav-option{
  
@@ -458,9 +476,6 @@ body{
          backdrop-filter: blur(3px);
          display: flex;
          flex-wrap: wrap;
-         justify-content: center;
-         align-items: center;
-         gap: 10px;
 
          
          

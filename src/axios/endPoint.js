@@ -59,8 +59,7 @@ axiosClient.interceptors.response.use(
   async (error) => {
    
     const origingalRequest = error.config
-
-      
+   
 
 
 
@@ -96,7 +95,6 @@ axiosClient.interceptors.response.use(
           await RefreshTheToken()
           socket.disconnect().connect()
           processQueue()
-   
           return axiosClient(origingalRequest)
 
 
@@ -148,6 +146,7 @@ axiosClient.interceptors.response.use(
     }
 
    if(message ===missingTokenErrorMessage){
+    
       
        throw Error("missing Token")
       

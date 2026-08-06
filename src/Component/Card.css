@@ -1,204 +1,768 @@
 
 
-
-
-
-.Card{
-    width: 22%;
-    height:auto;
-    background-color: #1A2023;
-    background: rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 10px;
-    flex-shrink: 0;
-    flex-direction: column;
-    padding: 3px;
-    gap: 1px;
-}
-
-.left-avtar  {
-    width: 100px;
-    height: 100px;
-    background-color: rgb(199, 173, 173);
-    border-radius: 100%;
-     
  
-  
-    
-}
 
-.left-avtar  img{
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    object-fit: contain;
-    user-select: none;
-     
-}
+    .Card{
+        margin-top: 10px;
+        width:250px;
+        height:290px;
+        position:relative;
+        overflow:hidden;
 
-.middleAvatr{
-     
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    user-select: none;
-}
-.middleAvatr h1{
-    color: aliceblue;
-    font-size: 23px;
-     font-family: "Akaya Kanadaka", system-ui;
-  font-weight: 400;
-  font-style: normal;
+        background:linear-gradient(160deg,#161B22 0%,#0E1116 100%);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:18px;
 
-}
-.middleAvatr span{
-    color: rgb(209, 200, 200);
-     font-family: "Akaya Kanadaka", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-.right-side{
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    
-}
-.right-side button{
-    padding: 7px;
-    border-radius: 10px;
-    border: none;
-    user-select: none;
-    transition: 0.2s all ease;
-    
-}
-.right-side button:first-child{
-    background-color: #E8536E;
-    background-color: var(--icon-color);
-    color: black;
-    letter-spacing: 0.5px;
-    font-weight: bold;
-}
+        box-shadow:
+            0 10px 30px rgba(0,0,0,.45),
+            inset 0 1px 0 rgba(255,255,255,.05);
 
-.right-side button:nth-child(2){
-    border:1px solid var(--icon-color);
-    color: white;
-    font-weight: bold;
-    background-color: #1A2023;
-}
+        transition:all .35s ease;
+    }
 
-.right-side button:active{
-    transform: scale(1.1);
-}
+    /* .Card:hover{
+        transform:translateY(-6px);
+        box-shadow:
+            0 20px 45px rgba(0,0,0,.6),
+            0 0 25px rgba(137,177,42,.2);
+    } */
 
+    /* Green Glow */
+    .Card::before{
+        content:"";
+        position:absolute;
+        top:-80px;
+        left:-40px;
 
+        width:220px;
+        height:220px;
 
+        background:radial-gradient(circle,
+                rgba(137,177,42,.18),
+                transparent 70%);
 
+        pointer-events:none;
+    }
+
+    /* Shine Effect */
+    .Card::after{
+        content:"";
+        position:absolute;
+
+        top:0;
+        left:-120%;
+
+        width:70%;
+        height:100%;
+
+        background:linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+        transform:skewX(-25deg);
+        transition:.8s;
+    }
+
+    .Card:hover::after{
+        left:160%;
+    }
+
+    /* Logo Section */
+
+    .__logo_pictuer{
+        width:100%;
+        height:40%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .logoBg{
+
+        width:95px;
+        height:95px;
+        border-radius:50%;
+
+        background:linear-gradient(
+            145deg,
+            #23282d,
+            #0f1216
+        );
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        box-shadow:
+            0 0 0 2px #89B12A,
+            0 0 18px rgba(137,177,42,.45),
+            inset 0 0 12px rgba(255,255,255,.05);
+
+        transition:.3s;
+    }
+
+    .logoBg:hover{
+        transform:scale(1.05);
+    }
+
+    .logoBg img{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+    }
+
+    /* Floating Trophy */
+
+    .winsfloat{
+
+        width:34px;
+        height:34px;
+
+        border-radius:50%;
+
+        background:linear-gradient(
+            145deg,
+            #252b31,
+            #0d0f12
+        );
+
+        border:1px solid rgba(255,255,255,.08);
+
+        box-shadow:
+            0 0 12px rgba(137,177,42,.35);
+
+        position:absolute;
+        top:5px;
+        right:2px;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .winsfloat img{
+        width:60%;
+        height:60%;
+    }
+
+    /* Team Name */
+
+    .__card_name_team{
+
+        width:100%;
+        height:8%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .__card_name_team h1{
+
+        color:#fff;
+        font-size:18px;
+        font-weight:700;
+        letter-spacing:.5px;
+    }
+
+    /* Small Name */
+
+    .__card_little_name{
+
+        width:100%;
+        height:9%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .__card_little_name h2{
+
+        font-size:11px;
+        color:#9CA3AF;
+
+        letter-spacing:1px;
+        text-transform:uppercase;
+        font-weight:500;
+    }
+
+    /* Player Images */
+
+    .__card__img__sesctions{
+
+        width:100%;
+        height:11%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .imgContainer__card__section{
+
+        width:28px;
+        height:28px;
+
+        overflow:hidden;
+
+        border-radius:50%;
+
+        border:2px solid #1b1f24;
+
+        background:black;
+
+        box-shadow:
+            0 3px 8px rgba(0,0,0,.4);
+
+        transition:.3s;
+    }
+
+    .imgContainer__card__section:hover{
+        transform:translateY(-2px) scale(1.08);
+    }
+
+    .imgContainer__card__section img{
+
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .imgContainer__card__section:nth-child(2){
+        transform:translateX(-5px);
+    }
+
+    .imgContainer__card__section:nth-child(3){
+        transform:translateX(-10px);
+    }
+
+    .imgContainer__card__section:nth-child(4){
+        transform:translateX(-15px);
+    }
+
+    .imgContainer__card__section:nth-child(5){
+
+        transform:translateX(-20px);
+
+        color:white;
+        font-size:5px;
+        font-weight:bold;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        background:#20252B;
+    }
+
+    /* Trophy Stats */
+
+    .trophy__card__section{
+
+        width:100%;
+        height:12%;
+
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        padding:0 12px;
+
+        border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .first__trophy_blok{
+
+        width:30%;
+        height:100%;
+
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+    }
+
+    .trophy__card__section img{
+
+        width:16px;
+        height:16px;
+    }
+
+    .trophy__card__section h1{
+
+        color:white;
+        font-size:13px;
+        font-weight:600;
+    }
+
+    /* Buttons */
+
+    .__button_workingon{
+
+        width:100%;
+        height:17%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        gap:10px;
+    }
+
+    .divOption{
+
+        width:36px;
+        height:36px;
+
+        border-radius:10px;
+
+        background:#1A1F24;
+
+        border:1px solid rgba(255,255,255,.08);
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        transition:.3s;
+    }
+
+    .divOption:hover{
+
+        background:#242B31;
+
+        transform:translateY(-2px);
+
+        box-shadow:
+            0 8px 15px rgba(0,0,0,.35);
+    }
+
+    .divOption img{
+
+        width:15px;
+        height:15px;
+    }
+
+    .__button_workingon button{
+
+        width:65%;
+        height:42px;
+
+        border:none;
+        border-radius:12px;
+
+        background:linear-gradient(
+            135deg,
+            #A6D633,
+            #7BAA19
+        );
+
+        color:#111;
+
+        font-size:14px;
+        font-weight:700;
+
+        cursor:pointer;
+
+        transition:.3s;
+    }
+
+    .__button_workingon button:hover{
+
+        transform:translateY(-2px);
+
+        box-shadow:
+            0 10px 20px rgba(137,177,42,.35);
+    }
+
+    .__button_workingon button:active{
+        transform:scale(.97);
+    }
+ 
 
 @media (max-width: 800px) {
 
-.Card{
-    width: 45%;
-    height:auto;
-    background-color: #1A2023;
-    background: rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 10px;
-    flex-shrink: 0;
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
-}
+    .Card{
+        margin-top: 10px;
+        width:170px;
+        height:290px;
+        position:relative;
+        overflow:hidden;
+        box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
+        transition:all .35s ease;
+        background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        /* background-image: url("/myteamPics/d.PNG");  */
 
-.left-avtar  {
-    width: 50px;
-    height: 50px;
-    background-color: rgb(199, 173, 173);
-    border-radius: 100%;
-  
-    
-}
+    }
 
-.left-avtar  img{
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    object-fit: contain;
-    user-select: none;
-}
+    /* .Card:hover{
+        transform:translateY(-6px);
+        box-shadow:
+            0 20px 45px rgba(0,0,0,.6),
+            0 0 25px rgba(137,177,42,.2);
+    } */
 
-.middleAvatr{
-     
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    user-select: none;
-}
-.middleAvatr h1{
-    color: aliceblue;
-    font-size: 23px;
-     font-family: "Akaya Kanadaka", system-ui;
-  font-weight: 400;
-  font-style: normal;
+    /* Green Glow */
+    .Card::before{
+        content:"";
+        position:absolute;
+        top:-80px;
+        left:-40px;
 
-}
-.middleAvatr span{
-    color: rgb(209, 200, 200);
-     font-family: "Akaya Kanadaka", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-.right-side{
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    
-}
-.right-side button{
-    padding: 7px;
-    border-radius: 10px;
-    border: none;
-    user-select: none;
-    transition: 0.2s all ease;
-    
-}
-.right-side button:first-child{
-    background-color: #E8536E;
-    background-color: var(--icon-color);
-    color: black;
-    letter-spacing: 0.5px;
-    font-weight: bold;
-}
+        width:220px;
+        height:220px;
 
-.right-side button:nth-child(2){
-    border:1px solid var(--icon-color);
-    color: white;
-    font-weight: bold;
-    background-color: #1A2023;
+        background:radial-gradient(circle,
+                rgba(137,177,42,.18),
+                transparent 70%);
+
+        pointer-events:none;
+    }
+
+    /* Shine Effect */
+    .Card::after{
+        content:"";
+        position:absolute;
+
+        top:0;
+        left:-120%;
+
+        width:70%;
+        height:100%;
+
+        background:linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+        transform:skewX(-25deg);
+        transition:.8s;
+    }
+
+    .Card:hover::after{
+        left:160%;
+    }
+
+    /* Logo Section */
+
+    .__logo_pictuer{
+        width:100%;
+        height:40%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .logoBg{
+
+        width:95px;
+        height:95px;
+        border-radius:50%;
+
+        background:linear-gradient(
+            145deg,
+            #23282d,
+            #0f1216
+        );
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        box-shadow:
+            0 0 0 2px #89B12A,
+            0 0 18px rgba(137,177,42,.45),
+            inset 0 0 12px rgba(255,255,255,.05);
+
+        transition:.3s;
+    }
+
+    .logoBg:hover{
+        transform:scale(1.05);
+    }
+
+    .logoBg img{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+    }
+
+    /* Floating Trophy */
+
+    .winsfloat{
+
+        width:34px;
+        height:34px;
+
+        border-radius:50%;
+
+        background:linear-gradient(
+            145deg,
+            #252b31,
+            #0d0f12
+        );
+
+        border:1px solid rgba(255,255,255,.08);
+
+        box-shadow:
+            0 0 12px rgba(137,177,42,.35);
+
+        position:absolute;
+        top:5px;
+        right:2px;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .winsfloat img{
+        width:60%;
+        height:60%;
+    }
+
+    /* Team Name */
+
+    .__card_name_team{
+
+        width:100%;
+        height:8%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .__card_name_team h1{
+
+        color:#fff;
+        font-size:18px;
+        font-weight:700;
+        letter-spacing:.5px;
+    }
+
+    /* Small Name */
+
+    .__card_little_name{
+
+        width:100%;
+        height:9%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .__card_little_name h2{
+
+        font-size:11px;
+        color:#9CA3AF;
+
+        letter-spacing:1px;
+        text-transform:uppercase;
+        font-weight:500;
+    }
+
+    /* Player Images */
+
+    .__card__img__sesctions{
+
+        width:100%;
+        height:11%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .imgContainer__card__section{
+
+        width:28px;
+        height:28px;
+
+        overflow:hidden;
+
+        border-radius:50%;
+
+        border:2px solid #1b1f24;
+
+        background:black;
+
+        box-shadow:
+            0 3px 8px rgba(0,0,0,.4);
+
+        transition:.3s;
+    }
+
+    .imgContainer__card__section:hover{
+        transform:translateY(-2px) scale(1.08);
+    }
+
+    .imgContainer__card__section img{
+
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .imgContainer__card__section:nth-child(2){
+        transform:translateX(-5px);
+    }
+
+    .imgContainer__card__section:nth-child(3){
+        transform:translateX(-10px);
+    }
+
+    .imgContainer__card__section:nth-child(4){
+        transform:translateX(-15px);
+    }
+
+    .imgContainer__card__section:nth-child(5){
+
+        transform:translateX(-20px);
+
+        color:white;
+        font-size:5px;
+        font-weight:bold;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        background:#20252B;
+    }
+
+    /* Trophy Stats */
+
+    .trophy__card__section{
+
+        width:100%;
+        height:12%;
+
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        padding:0 12px;
+
+        border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .first__trophy_blok{
+
+        width:30%;
+        height:100%;
+
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+    }
+
+    .trophy__card__section img{
+
+        width:16px;
+        height:16px;
+    }
+
+    .trophy__card__section h1{
+
+        color:white;
+        font-size:13px;
+        font-weight:600;
+    }
+
+    /* Buttons */
+
+    .__button_workingon{
+
+        width:100%;
+        height:17%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        gap:10px;
+    }
+
+    .divOption{
+
+        width:36px;
+        height:36px;
+
+        border-radius:10px;
+
+        background:#1A1F24;
+
+        border:1px solid rgba(255,255,255,.08);
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        transition:.3s;
+    }
+
+    .divOption:hover{
+
+        background:#242B31;
+
+        transform:translateY(-2px);
+
+        box-shadow:
+            0 8px 15px rgba(0,0,0,.35);
+    }
+
+    .divOption img{
+
+        width:15px;
+        height:15px;
+    }
+
+    .__button_workingon button{
+
+        width:65%;
+        height:42px;
+
+        border:none;
+        border-radius:12px;
+
+        background:linear-gradient(
+            135deg,
+            #A6D633,
+            #7BAA19
+        );
+
+        color:#111;
+
+        font-size:14px;
+        font-weight:700;
+
+        cursor:pointer;
+
+        transition:.3s;
+    }
+
+    .__button_workingon button:hover{
+
+        transform:translateY(-2px);
+
+        box-shadow:
+            0 10px 20px rgba(137,177,42,.35);
+    }
+
+    .__button_workingon button:active{
+        transform:scale(.97);
+    }
 }
-
-.right-side button:active{
-    transform: scale(1.1);
-}
-
-
-}   
- 
-
-
-

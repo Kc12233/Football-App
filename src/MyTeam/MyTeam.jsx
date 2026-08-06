@@ -46,7 +46,7 @@ const MyTeam = () => {
   return (
     <div className='myTeam'>
 
-      <div className="navbar-header">
+      <div className="navbar-heaedr">
 
         
         <div className="nav-option">
@@ -68,11 +68,6 @@ const MyTeam = () => {
 
         <div className="Session-groups">
            
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
                     <Card/>
                     <Card/>
                     <Card/>
