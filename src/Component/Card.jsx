@@ -2,10 +2,12 @@ import React from 'react'
 import "./Card.css"
 import { useNavigate } from 'react-router-dom'
 import { JoystickIcon } from 'lucide-react'
+import AvatarCard from './AvatarCard'
 const Card = () => {
   const Nav = useNavigate()
   const HandelJoin = ()=>{Nav("/home")}
-  
+  // if he live the session discoennect the connection and the open the connection
+  //  haha that erorr when he get error not send the request again when he refreh the toke
   return (
     <div className='Card'>
 
@@ -24,25 +26,17 @@ const Card = () => {
         <div className="__card_little_name">
           <h2>Legend Team</h2>
         </div>
-        <div className="__card__img__sesctions">
+
         
-         <div className="imgContainer__card__section">
-         <img src='/Memories/IMG_6190.jpg'/>  
-         </div>
+        <div className="__card__img__sesctions">
+          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
+          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
+          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
+          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
+      
+
          
-        <div className="imgContainer__card__section">
-         <img src='/Memories/IMG_6190.jpg'/>  
-         </div>
-
          <div className="imgContainer__card__section">
-         <img src='/Memories/IMG_6190.jpg'/>  
-         </div>
-
-         <div className="imgContainer__card__section">
-         <img src='/Memories/IMG_6190.jpg'/>  
-         </div>
-
-      <div className="imgContainer__card__section">
           <h1>+6</h1>
          </div>
 
@@ -63,7 +57,7 @@ const Card = () => {
           </div>
           <div className="first__trophy_blok">
             <img src='/myteamPics/svgicon/community-.svg'/>
-            <h1>11/12</h1>
+            <h1>43</h1>
           </div>
 
          

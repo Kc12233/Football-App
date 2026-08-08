@@ -42,6 +42,24 @@ body{
     }
     .nav-option{
          display: flex;
+ 
+         width: 100%;
+         background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+         border-radius: 16px;
+         /* border: 1px solid rgba(255, 255, 255, 0.15); */
+         border-radius: 10px;
+          background: #0f0f0f;
+            background: linear-gradient(
+                5deg,
+                #000000 0%,
+                #111111 50%,
+                #39ff14 100%
+            );
+         
+
+
       
            
     }
