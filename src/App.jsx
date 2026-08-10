@@ -46,7 +46,7 @@ import SocketProvider from './socketClient/SocketProvider'
 
 
 
-
+ 
 
 
 const App = () => {
@@ -57,8 +57,8 @@ const App = () => {
      
      <Routers>
 
-
     
+  
       <Path    path={'/login'} element={<Login/>}/>
       <Path    path={'/myTeam'} element={<MyTeam/>}/>
       <Path    path={'/CreateAccount'} element={<CreateAccount/>}/>

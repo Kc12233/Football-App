@@ -1,12 +1,16 @@
 
 
-@media (max-width: 800px) {
+
+
+
+
+ 
  
 
 
        .FinshedMatchesS{
             
-            width: 44%;
+            width: 10%;
             border-radius: 10px;
             flex-shrink: 0;
             background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
@@ -42,6 +46,7 @@
     border-radius: 15px;
     display: flex;
     align-items: center;
+    
     
    }
 
@@ -90,6 +95,257 @@
    }
    .left h1{
      font-size: 10px;
+   }
+ 
+
+
+     .right h1{
+     font-size: 10px;
+   }
+
+
+ 
+
+
+
+
+
+
+
+
+/* 
+----------------------------------- */
+@media (max-width: 800px) {
+ 
+
+
+       .FinshedMatchesS{
+            
+            width: 44%;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        
+        
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            color: white;
+            height: 90%;
+            user-select: none;
+            
+            
+            
+        }
+  
+        .FinshedMatchesS .down h1{
+            font-size: 13px;
+            
+            color: var(--nest-text-color);
+            display: flex;
+            justify-content:  center;
+            align-items: center;
+            
+        }
+
+   .FinshedMatchesS .top{
+    width: 100%;
+    height:70%;
+    /* background-color: red; */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    
+    
+   }
+
+   .FinshedMatchesS .left{
+    width: 30%;
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+   }
+      .FinshedMatchesS .middle-score{
+    width: 40%;
+    /* background-color: aqua; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+   }
+
+      .FinshedMatchesS .right{
+    width: 30%;
+    height: 100%;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   }
+
+
+
+   .avtarVlag{
+    width: 30px;
+    height: 30px;
+    /* background-color: black; */
+    
+   }
+   .avtarVlag img{
+    width: 100%;
+    height: 100%;
+
+   }
+   .left h1{
+     font-size: 10px;
+   }
+ 
+
+
+     .right h1{
+     font-size: 10px;
+   }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 360px) {
+ 
+
+
+       .FinshedMatchesS{
+            
+            width:50%;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        
+        
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            color: white;
+            height: 90%;
+            user-select: none;
+            
+          
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+  
+        .FinshedMatchesS .down h1{
+            font-size: 13px;
+            
+            color: var(--nest-text-color);
+            display: flex;
+            justify-content:  center;
+            align-items: center;
+            display: none;
+
+            
+        }
+
+   .FinshedMatchesS .top{
+    width: 100%;
+    height:70%;
+    /* background-color: red; */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+     
+    
+   }
+
+   .FinshedMatchesS .left{
+    width: 30%;
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+   }
+      .FinshedMatchesS .middle-score{
+    width: 40%;
+    /* background-color: aqua; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6px;
+  
+   }
+
+      .FinshedMatchesS .right{
+    width: 30%;
+    height: 100%;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   }
+
+
+
+   .avtarVlag{
+    width: 24px;
+    height: 24px;
+    /* background-color: black; */
+    
+   }
+   .avtarVlag img{
+    width: 100%;
+    height: 100%;
+
+   }
+   .left h1{
+     font-size: 8px;
    }
  
 

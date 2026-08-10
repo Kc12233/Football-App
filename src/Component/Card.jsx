@@ -64,7 +64,7 @@ const Card = () => {
         </div>
 
         <div className="__button_workingon">
-          <button>Join</button>
+          <button onClick={()=>Nav("/home/Scores")}>Join</button>
           <div className="divOption">
             <img src='/myteamPics/svgicon/option.svg'/>
           </div>

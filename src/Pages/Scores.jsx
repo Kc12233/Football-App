@@ -105,6 +105,7 @@ const Scores = () => {
       <div className="watchScreen">
 
         <img src="/testpic/bbg.png" loading="lazy" />
+        
           {
             TheirNews?   
               <>
@@ -116,7 +117,7 @@ const Scores = () => {
 
              
              
-             :  <p className="description">Welcome back ,{Username&& Username} 👋  </p> 
+             :  <p className="description">Welcome back , {Username&& Username} 👋  </p> 
           }
          
           <h1 className="description-mem">Play football.</h1>
@@ -143,12 +144,28 @@ const Scores = () => {
 
  
      <div className="viewAllList">
-      
-       <CardInfo teamFull = {false}/>
-       <CardInfo teamFull = {false}/>
-       <CardInfo teamFull = {true}/>
+{/*       
+       <CardInfo teamFull = {false}/>   */}
 
-      
+
+    <div className="no-matches">
+      <div className="logo-matches-assets">
+        <img src='/nomatchesAssets/ball.png'/>
+      </div>
+      <div className="content-matches-assets">
+        <h1>No upcoming matches</h1>
+        <h3>The pitch is waiting for your.⚽ </h3>
+        <h3>Create a match and invite your freinds to play.</h3>
+      </div>
+
+      <div className="content-button">
+        <button><Plus size={20}/> Create Match</button>
+      </div>
+    </div>
+
+
+
+
       </div>  
 
 
@@ -248,7 +265,7 @@ const Scores = () => {
 
 
 <div className="container-card-choise">
-
+{/* 
 {
   off  &&
 
@@ -262,7 +279,7 @@ const Scores = () => {
 </div>
 
 
-}
+} */}
 
 
 
