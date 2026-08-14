@@ -1,4 +1,9 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Archivo+Black&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+
 body{
     overflow-x: hidden;
 }
@@ -86,6 +91,11 @@ body{
             font-family:sans-serif;
             letter-spacing:1.4px;
             user-select: none;
+                
+            font-family: "Rubik Spray Paint", system-ui;
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-style: normal;
         }
       
     }
@@ -350,7 +360,114 @@ body{
 
 
 
+.youdontfollowroomdes{
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 200px;
+        height: 200px;
+        filter: drop-shadow(0 0 0.75rem var(--icon-color));
+       
+    }
 
+
+    
+    h1{
+        color: white;
+        
+        text-transform: capitalize;
+        font-size: 27px;
+       
+          font-family: "Rubik Spray Paint", system-ui;
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-style: normal;
+ 
+    }
+    h2{
+           color: #7ECD6C;
+         
+      
+           font-family: "Rubik Spray Paint", system-ui;
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-style: normal;
+            margin-bottom: 13px;
+    }
+    p{
+            color: grey;
+         
+            font-weight: 100;
+            font-size: 15px;
+            letter-spacing: .2px;
+            
+            font-family: "Google Sans Flex", sans-serif;
+            font-optical-sizing: auto;
+            font-weight:600;
+            font-style: normal;
+            font-variation-settings:
+                "slnt" 0,
+                "wdth" 100,
+                "GRAD" 0,
+                "ROND" 0;
+    
+}
+
+
+
+
+ @keyframes colorChange{
+  from {
+    filter: drop-shadow(0 0 0.75rem var(--icon-color));
+  }
+
+  to {
+    filter: drop-shadow(0 0 0.75rem crimson);
+  }
+}
+
+
+
+
+
+ 
+.button-session-desing{
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 6px 10px 6px 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-size: 15px;
+
+
+  
+
+    border: 1px solid rgba(80, 255, 100, 0.45);
+    border-radius: 16px;
+
+    box-shadow:
+        0 0 15px rgba(50, 255, 80, 0.25),
+        0 0 35px rgba(50, 255, 80, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    color: white;
+    font-weight: 600;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+}
 
 
 
@@ -442,6 +559,11 @@ body{
             font-family:sans-serif;
             letter-spacing:1.4px;
             user-select: none;
+            
+            font-family: "Rubik Spray Paint", system-ui;
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-style: normal;
         }
       
     }

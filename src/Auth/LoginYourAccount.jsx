@@ -44,9 +44,7 @@ const LoginYourAccount = () => {
         })
 
         if(LoginRequest.statusText ==="OK"){
- 
-         localStorage.setItem("_login","true")
-
+  
          
           dispatch({
             type : "ADD_ID",

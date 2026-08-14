@@ -158,8 +158,6 @@
 
 
 
-
-
  
 
 
@@ -2479,15 +2477,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     
 }
+
+
+.info-content-container    .notifaction img:active{
+
+   transform: scale(1.3);
+
+    
+}
+
 .info-content-container .avatar-user{
     width: 40px;
     height: 40px;
     background-color:  var(--color-inside-icons);
     border-radius: 100%;
     transform: translateX(-10px);
+    cursor: pointer;
 }
 
 .info-content-container{
@@ -2935,7 +2944,7 @@
  
 
     .news_card{
-            width: 13%;
+            width:12%;
             
             height: 93%;
            
@@ -6417,3 +6426,46 @@
  
 
 }
+
+
+@media screen and (min-width: 801px) and (max-width: 1622px) {
+   
+           .Section-cards{
+            width: 100%;
+       
+            height:auto;
+            /* background-color: red; */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            margin-top: 5px;
+            
+         }
+     
+
+
+ 
+
+    .news_card{
+            width:24%;
+            
+            height: 93%;
+           
+            flex-shrink: 0;
+            border-radius: 10px;
+            overflow-y: hidden;
+            display: flex;
+            
+            background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+            border-radius: 16px;
+            padding: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px;           
+         }
+
+}
+
+

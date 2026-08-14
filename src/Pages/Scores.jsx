@@ -5,9 +5,23 @@ import FinshedMatches  from "../Component/FinshedMatches.jsx"
 import axios from "axios"
 import  use from "react"
 import { Cone, Plus, User } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../useContext/UseContext.jsx'
+import PendingAcceptPersonRequest from './PendingAcceptPersonRequest.jsx'
+import axiosClient from '../axios/endPoint.js'
 const Scores = () => {
+
+ const {Username , id ,img , dispatch}  =  useAuth()  
+ const idRoom   = useParams()
+  const Nav = useNavigate()
+
+  useEffect(()=>{
+    if(!idRoom.roomId)
+    {
+      Nav("/login")
+    }
+  },[])
+
  const [card,SetCard] = useState([
 
     {
@@ -43,23 +57,25 @@ const Scores = () => {
 
  const [off,Setoff] = useState(false)
 
- const Nav = useNavigate()
+ 
 
  
-    const {Username , id ,img , dispatch}  =  useAuth()  
-    
-    useEffect(()=>{
-      if(Username && id && img){
-        console.log(Username , id , img)
-      }
-
-      console.log("hey this Component Mount")
-    },[])
 
     
-
+    // useEffect(()=>{
+    //   if(Username && id && img){
+    //     console.log(Username , id , img)
+    //   }
 
     
+    // },[])
+
+    
+
+const HandelNotifaction = ()=>{
+  Nav(`/home/notifaction/${idRoom.roomId}`)
+}
+
   return (
 
       <> 
@@ -86,7 +102,7 @@ const Scores = () => {
           </div>
 
 
-          <div className="notifaction">
+          <div className="notifaction"   onClick={()=>{HandelNotifaction()}}>
                 <span className="popup"></span>
                 <img src="/myTeamIcon/notifaction.svg"/>
           </div>
@@ -94,7 +110,7 @@ const Scores = () => {
           <div className="avatar-user">
           <span className="popup2"></span>
 
-            <img src={img ? img : "/testpic/man2."}/>
+            <img src={img ? img : "/testpic/man2.png"}/>
               
 
           </div>
@@ -308,6 +324,7 @@ const Scores = () => {
 
 
 
+ 
 
      </div>
 

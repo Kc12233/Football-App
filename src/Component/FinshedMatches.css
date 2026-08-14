@@ -10,7 +10,7 @@
 
        .FinshedMatchesS{
             
-            width: 10%;
+            width: 20%;
             border-radius: 10px;
             flex-shrink: 0;
             background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
@@ -24,6 +24,7 @@
             color: white;
             height: 90%;
             user-select: none;
+             
             
             
             
@@ -83,8 +84,11 @@
 
 
    .avtarVlag{
-    width: 30px;
-    height: 30px;
+    width: 23px;
+    height: 23px;
+  
+    margin-top: 13px;
+    margin-bottom: 5px;
     /* background-color: black; */
     
    }

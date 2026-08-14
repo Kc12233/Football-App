@@ -41,6 +41,7 @@ import TestRequest from './Pages/TestRequest'
 import Shortes from './Pages/Shortes'
 import TestInterceptor from './Pages/TestInterceptor'
 import SocketProvider from './socketClient/SocketProvider'
+import PendingAcceptPersonRequest from './Pages/PendingAcceptPersonRequest'
  
 
 
@@ -72,11 +73,12 @@ const App = () => {
 
       <Path    path={'/Home'} element={<HomeScore/>}>
         <Path index element={<Scores/>} />
-        <Path  path="Scores" element={<Scores />} />
+        <Path  path="Scores/:roomId" element={<Scores />} />
         <Path path="shorts" element={<Shortes />} />
         <Path path="news" element={<News />} />
         <Path path="profile" element={<Profile />} />
       </Path>
+      <Path path='/home/notifaction/:roomId' element={<PendingAcceptPersonRequest/>}/>
 
       <Path    path={'/achievements'} element={<Achievements/>}>
                 <Path index element={<All />} />
