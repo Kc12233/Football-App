@@ -45,7 +45,7 @@ const LoginYourAccount = () => {
 
         if(LoginRequest.statusText ==="OK"){
   
-         
+      
           dispatch({
             type : "ADD_ID",
             payload :{
@@ -83,6 +83,10 @@ const LoginYourAccount = () => {
        
       }
 
+     finally{
+            setLoading(false)
+            setLoadingUsp(true)
+     }
   
 
     

@@ -8,10 +8,10 @@ const Card = ({info}) => {
   
   const Nav = useNavigate()
   const HandelJoin = ()=>{Nav("/home")}
-  // if he live the session discoennect the connection and the open the connection
-  //  haha that erorr when he get error not send the request again when he refreh the toke
+ 
 
   const {id} = useAuth()
+ 
 
     
   return (
@@ -33,9 +33,9 @@ const Card = ({info}) => {
     
     >
 
-        <div className="winsfloat">
+     {id==info.ownerId &&    <div className="winsfloat">
           <img src='/myteamPics/svgicon/king.svg'/>
-        </div>
+        </div>}
 
         <div className="__logo_pictuer">
           <div className="logoBg">
@@ -53,17 +53,11 @@ const Card = ({info}) => {
 
         
         <div className="__card__img__sesctions">
-          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
-          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
-          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
-          <AvatarCard url={'/Memories/IMG_6190.jpg'}/>
-      
-
-         
-         <div className="imgContainer__card__section">
-          <h1>+6</h1>
-         </div>
-
+        
+       {
+       info.members.length>0 &&  info.members.slice(0,5).map((item)=>   <AvatarCard  key={item.membersId} url={item.img}/>)
+       }
+   
 
 
          

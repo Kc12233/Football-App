@@ -49,7 +49,7 @@ const PendingAcceptPersonRequest = () => {
   const getRequest =async ()=>{
     try{
     
-      console.log(idRoom.roomId ,"<== this what we send at first time")
+      
          const response = await axiosClient.post("/room/seeRequests" ,{
         "roomId" : idRoom.roomId
        })
@@ -101,8 +101,8 @@ const PendingAcceptPersonRequest = () => {
 
 
           if(Response.data.info =="you not the owner"){
-        setHide(true)
-       }
+            setHide(true)
+          }
 
 
        setRequestes(Response.data.data)

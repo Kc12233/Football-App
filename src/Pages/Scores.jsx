@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../useContext/UseContext.jsx'
 import PendingAcceptPersonRequest from './PendingAcceptPersonRequest.jsx'
 import axiosClient from '../axios/endPoint.js'
+import Online from '../online/Online.jsx'
 const Scores = () => {
 
  const {Username , id ,img , dispatch}  =  useAuth()  
@@ -61,20 +62,10 @@ const Scores = () => {
 
  
 
-    
-    // useEffect(()=>{
-    //   if(Username && id && img){
-    //     console.log(Username , id , img)
-    //   }
+ 
 
     
-    // },[])
-
-    
-
-const HandelNotifaction = ()=>{
-  Nav(`/home/notifaction/${idRoom.roomId}`)
-}
+ 
 
   return (
 
@@ -102,7 +93,7 @@ const HandelNotifaction = ()=>{
           </div>
 
 
-          <div className="notifaction"   onClick={()=>{HandelNotifaction()}}>
+          <div className="notifaction"   onClick={()=>{  Nav(`/home/notifaction/${idRoom.roomId}`)}}>
                 <span className="popup"></span>
                 <img src="/myTeamIcon/notifaction.svg"/>
           </div>
@@ -327,7 +318,7 @@ const HandelNotifaction = ()=>{
  
 
      </div>
-
+<Online/>
      
 
       </>
