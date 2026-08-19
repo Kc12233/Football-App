@@ -8,19 +8,22 @@ import { RefreshTheToken } from '../RefreshToken/RefrshTokenL'
 import axiosClient from '../axios/endPoint'
 import socket from '../socketClient/socket'
 import Online from '../online/Online'
+import CardSkeleton from '../Loader/CardSkeleton'
 
 const MyTeam = () => {
     const [off,SetOff] = useState(true)
     const {Username , id ,img , dispatch}  =  useAuth()  
     const [rooms,SetRooms] = useState([])
     const [isFollowRoom,SetisFollowRoom]= useState(false)
+    const [Skeleton,SetSkeleten] = useState(false)
+
    
 
 
     const Nav = useNavigate()
     const HandelReturn = () =>{
       if(id)return
-        Nav("/login")
+      Nav("/login")
 
   
     }
@@ -33,18 +36,21 @@ const MyTeam = () => {
    
    
     const getMyRooms =async ()=>{
+      
       try{
+      SetSkeleten(true)
       const roomListResponse =  await axiosClient.get("/room/getrooms")
-    
+       
       if(roomListResponse.data.err =="you dont follow any rooms ."){
         console.log("no room ")
         SetisFollowRoom(true)
+        SetSkeleten(false)
         
       }
    
       if(roomListResponse?.data?.info?.length==0){
         SetisFollowRoom(true)
-        
+          SetSkeleten(false)
         
         
       }
@@ -52,45 +58,56 @@ const MyTeam = () => {
          console.log(roomListResponse.data)
          SetisFollowRoom(false)
          SetRooms(roomListResponse.data.info)
+         SetSkeleten(false)
       }
       
     
 
       }catch(err){
+        SetSkeleten(false)
         console.log(err.message)
+      }
+      finally{
+         SetSkeleten(false)
       }
 
     }
 
     getMyRooms()
    },[])
-
+  
   const HandelRefresh = async()=> {
       try{
+      SetSkeleten(true)
       const roomListResponse =  await axiosClient.get("/room/getrooms")
     
       if(roomListResponse.data.err =="you dont follow any rooms ."){
         console.log("no room ")
         SetisFollowRoom(true)
-        
+        SetSkeleten(false)
       }
    
       if(roomListResponse?.data?.info?.length==0){
         SetisFollowRoom(true)
-        
+         SetSkeleten(false)
         
         
       }
       if(roomListResponse?.data?.info?.length>0){
          console.log(roomListResponse.data)
          SetisFollowRoom(false)
+         SetSkeleten(false)
          SetRooms(roomListResponse.data.info)
       }
       
     
 
       }catch(err){
+          SetSkeleten(false)
         console.log(err.message)
+      }
+      finally{
+          SetSkeleten(false)
       }
 
   }
@@ -141,7 +158,20 @@ const MyTeam = () => {
                     
                     
                     : 
-                 
+                    Skeleton? 
+                    <>  
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    </>
+                    :
                       rooms.map((item)=><Card info={item} key={item.roomId}/>)
                     }
        

@@ -201,19 +201,7 @@ const Scores = () => {
 
 
 
- {/* <div className="FinshedMatches">
-      <div className="left">
-        <h1>Football news</h1>
-      </div>
-          
-         <div className="right">
-           <span>view all</span>
-         <img src="/myTeamIcon/view1.svg" loading="lazy"/>
-         </div>
-
-          <img src='/navbaricon/Koura.png'/>
-           
- </div> */}
+ 
 
  
       
@@ -272,30 +260,14 @@ const Scores = () => {
 
 
 <div className="container-card-choise">
-{/* 
-{
-  off  &&
-
-  
-
-  <div className="container-starts">
-  <div id="stars"></div>
-  <div id="stars2"></div>
-  <div id="stars3"></div>
-  <div></div>
-</div>
-
-
-} */}
+ 
 
 
 
 
 
 
-  <div
-  
- onClick={()=>Nav("/CreateMatche")}
+  <div onClick={()=>Nav("/CreateMatche")}
   className={`first_box_1 bounce ${off && 'disable'}`}>
     <h1>Match</h1>
     <img src='/myTeamIcon/blueCreate.svg'/>
@@ -312,12 +284,10 @@ const Scores = () => {
   </div>
 </div>
 
-
-
-
  
+</div>
 
-     </div>
+
 <Online/>
      
 

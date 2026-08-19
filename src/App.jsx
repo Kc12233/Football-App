@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react'
 import { Route as Path, Routes as Routers } from 'react-router-dom'
 
 import SocketProvider from './socketClient/SocketProvider'
+import FirstView from './Loader/FirstView'
+import CardSkeleton from './Loader/CardSkeleton'
 
  
 const Login = lazy(() => import('./Auth/Login'))
@@ -29,12 +31,14 @@ const Achievements = lazy(() => import('./Pages/Achievements'))
 const All = lazy(() => import('./Component/All'))
 const Unlocked = lazy(() => import('./Component/Unlocked'))
 const Locked = lazy(() => import('./Component/Locked'))
-
+const Loading = lazy(()=>import("./Loader/FirstView"))
 const App = () => {
   return (
     <>
       <SocketProvider>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={
+          <FirstView/>
+        }>
           <Routers>
             <Path path={'/login'} element={<Login />} />
             <Path path={'/myTeam'} element={<MyTeam />} />
@@ -65,15 +69,20 @@ const App = () => {
               path="/home/notifaction/:roomId"
               element={<PendingAcceptPersonRequest />}
             />
-
+           <Path path={'/test'} element={<CardSkeleton/>}/>
+               
             <Path path={'/achievements'} element={<Achievements />}>
               <Path index element={<All />} />
               <Path path="all" element={<All />} />
               <Path path="Unlocked" element={<Unlocked />} />
               <Path path="Locked" element={<Locked />} />
             </Path>
+
+            
           </Routers>
+       
         </Suspense>
+          
       </SocketProvider>
     </>
   )

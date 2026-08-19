@@ -4,9 +4,10 @@ import { Camera, Cone, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import axiosClient from "../axios/endPoint";
 import axios from "axios";
-import Kull from "../Loader/Kull";
+ 
 import { toast  ,ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import GhostLoad from "../Loader/Ghost";
  
  
 const APICloudinary = import.meta.env.VITE_API_KEY;
@@ -98,7 +99,7 @@ const CreateSession = () => {
     <> 
  
     {
-      loading && <Kull/> 
+      loading && <GhostLoad/> 
     }
    <ToastContainer/>
     <div className="container_create_session">

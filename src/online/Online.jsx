@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react'
 import "./online.css"
 import socket from '../socketClient/socket'
 const Online = () => {
-    const [users,setUsers] = useState(()=>JSON.parse(localStorage.getItem("online"))|| 0 )
+    const [users,setUsers] = useState(()=>JSON.parse(localStorage.getItem("online")) || 0 )
     const [bounce,setBounce] = useState(false)
  
     useEffect(()=>{
         const HandelOnline = (data)=>{ 
-            console.log(data)
-            setUsers(data.length)
-            setBounce(true)
-            setTimeout(() => {setBounce(false)  }, 1000);
-            localStorage.setItem("online",JSON.stringify(data.length))
+           
+              setUsers(data.length)
+              console.log(data)
+          
+            
+             localStorage.setItem("online",JSON.stringify(data.length))
+             setBounce(true)
+             setTimeout(() => {setBounce(false)  }, 1000);
 
 
         }
