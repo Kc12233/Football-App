@@ -1,6 +1,281 @@
 
 
+ 
 
+      
+
+.card-info{
+    width: 20%;
+    height: 160px;
+    background: rgba(8, 10, 11, 0.45); /* Semi-transparent */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    margin-top: 20px;
+  
+
+
+}
+
+
+.left-card-info-data{
+     width: 49.8%;
+     height: 100%;
+     
+     
+
+}
+
+
+.middlehr{
+ background-color: #464747;
+ 
+     width: 0.4%;
+     height: 88%;
+     border-radius: 100px;
+}
+
+.right-card-info-data{
+     
+    width: 49.8%;
+    height: 100%;
+   
+}
+
+
+.left-card-info-data .start-in h1{
+    font-size: 10px;
+
+
+    
+}
+.left-card-info-data .start-in {
+    margin-top: 10px;
+    margin-left: 13px;
+    background-color: var(  --background-color-icon);
+    width: 50%;
+    border-radius: 10px;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.4px;
+    color: var(--icon-color);
+
+
+}
+.left-card-info-data .timeStart img{
+     width: 20px;
+     height: 30px;
+}
+.left-card-info-data .timeStart  h1{
+   font-size: 12px;
+  
+
+}
+.left-card-info-data .timeStart  {
+  
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 15px;
+   
+    
+   
+
+}
+.left-card-info-data{
+    position: relative;
+}
+.sp{
+    transform: translateX(3px);
+}
+ 
+
+.right-card-info-data .Player h1{ 
+    color: var( --nest-text-color);
+    font-size: 17px;
+     transform: translateX(10px);
+     letter-spacing: 1.3px;
+     margin-top: 10px;
+ 
+}
+.firstn{
+    color: var( --text-color );
+
+}
+.divn{
+    color: var(--nest-text-color);
+}
+.seconden{
+     color: var(--nest-text-color);
+}
+.numberOfPlayer-in-room{
+    width: 40%;
+    margin-left: 10px;
+    margin-top: 2px;
+    font-size: 20px;
+}
+.personJoin{
+  
+    width: 90%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    
+    
+}
+  
+ 
+
+.personJoin .Avtar:nth-child(2){
+    transform: translateX(-5px);
+    z-index: 2;
+
+}
+.personJoin .Avtar:nth-child(3){
+    transform: translateX(-13px);
+    z-index: 3;
+    
+}
+
+.personJoin .Avtar:nth-child(4){
+    transform: translateX(-18px);
+    z-index:4;
+    
+}
+.personJoin .Avtar:nth-child(5){
+    transform: translateX(-23px);
+    z-index:5;
+    
+}
+.personJoin .Avtar:nth-child(6){
+    transform: translateX(-28px);
+    z-index:6;
+    
+}
+
+.butttonSession{
+ 
+    height: 30%;
+    margin-top: 5px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+     button{
+        background-color: var(--icon-color);
+        width: 90%;
+        height: 37px;
+        border-radius: 50px;
+        color: black;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: none;
+          user-select: none;
+       
+     }
+}
+.inforamtionLockedProfile{
+    width: 100%;
+    margin-top: 2px;
+    height: 3vh;
+    /* background-color: rgb(75, 33, 33); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.TeamFull{
+
+       display: flex;
+       align-items: center;
+       width: 49.5%;
+       gap:5px;
+ 
+ 
+        img{
+            width: 18px;
+            height: 18px;
+        }
+        h1{
+            font-size: 8px;
+            letter-spacing: 1px;
+            color: var(--icon-color);
+        }
+  
+}
+
+.middleitem{
+    width: 1%;
+    height: 80%;
+    border-radius: 300px;
+    background-color: var(--nest-text-color);
+}
+.TeamFull2{
+        width: 49.5%;
+       display: flex;
+       align-items: center;
+       gap:5px;
+ 
+
+        img{
+            width: 18px;
+            height: 18px;
+            
+        }
+        h1{
+          
+            font-size: 8px;
+            letter-spacing: 1px;
+            color: var(--nest-text-color);
+        }
+  
+}
+
+
+
+
+.butttonSession2{
+ 
+    
+    margin-top: 5px;
+    /* background-color: red; */
+    display: flex;
+    justify-content:flex-end;
+    height: 35px;
+     button{
+        background-color: var(--icon-color);
+        width: 60%;
+       
+        border-radius: 30px;
+        color: black;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: none;
+          user-select: none;
+          font-size: 10px;
+       
+     }
+}
+
+
+
+
+
+ 
+
+
+
+/* 
+--------------------------------------- */
 
 @media (max-width: 800px) {
 
@@ -20,8 +295,7 @@
     align-items: center;
     margin: 5px 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-    
- 
+    margin-top: 10px;
 
 
 }

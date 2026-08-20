@@ -196,3 +196,34 @@
     height:58px;
 }
 }
+
+
+.green_rquest{
+    color: green;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.4px;
+    
+     
+}
+
+.red_rquest{
+    color: red;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.4px;
+    
+     
+}
+
+.red_rquest_conflit{
+    color: crimson;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.4px;
+    
+     
+}

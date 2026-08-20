@@ -1,16 +1,11 @@
 
 
 
-
-
-
-
-@media (max-width: 800px) {
-
 .FinshedMatchContainer{
 
     width: 100%;
-    height: 60vh;
+    height: 100vh;
+   background-color: black;
     
 
 }
@@ -19,6 +14,7 @@
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
+     font-family: "Akaya Kanadaka", system-ui;
 }
 
 .TeamContainerSectionFinshedMatches{
@@ -189,7 +185,7 @@ background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
 
  .resultButtonPush{
     width: 100%;
-    height: 20%;
+    height: 10%;
    background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
      backdrop-filter: blur(20px);
      -webkit-backdrop-filter: blur(20px); / Safari/iOS */
@@ -208,8 +204,231 @@ background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
     
  }
  .resultButtonPush button{
-    width: 55%;
+    width: 20%;
     height: 60%;
+    border-radius: 10px;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    
+    font-family: "Akaya Kanadaka", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    background: #833AB4;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    color: white;
+    
+    filter: drop-shadow(0 0 0.75rem rgb(172, 48, 48));
+ }
+
+
+
+
+@media (max-width: 800px) {
+
+.FinshedMatchContainer{
+
+    width: 100%;
+    height: 100vh;
+    
+
+}
+
+.FinshedMatchContainer h1{
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.TeamContainerSectionFinshedMatches{
+    width: 100%;
+    height: 30%;
+   background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); / Safari/iOS */
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+ 
+ 
+.box_container__{
+    
+    width: 49%;
+    height: 100%;
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    gap: 13px;
+    border-radius: 10px;
+
+
+    background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); / Safari/iOS */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+
+
+   
+  
+}
+
+
+.box_container__ .card_finished_match:active{
+    transform: scale(1.5);
+}
+.card_finished_match{
+    width: 50px;
+    height: 50px;
+  
+    border-radius: 100%;
+    flex-shrink: 0;
+    margin-top: 10px;
+    border: 1px solid var(--icon-color);
+    padding: 1px;
+      
+      transition: all .4s ease-in-out;
+}
+
+.card_finished_match img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.inputContainer__{
+    width: 100%;
+    height:10%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    /* background-color: green; */
+background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); / Safari/iOS */
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            
+    
+}
+
+.cardPlust_input{
+    width: 50%;
+    /* background-color: purple; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+  
+.cardPluuss{
+    width: 45%;
+    height: 100%;
+    /* background-color: rgb(158, 102, 102); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    img{
+         background-color: rgb(8, 142, 252);
+         border-radius: 10px;
+         padding: 2px;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+.CoutnerView{
+     width: 10%;
+    height: auto;
+    padding:4px;
+    border-radius: 10px;
+    
+    /* background-color: rgb(63, 197, 10); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    background-color: black;
+
+}
+.cardMInus{
+    width: 45%;
+    height: 100%;
+    /* background-color: hsl(305, 100%, 53%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 34px;
+        height: 34px;
+           background-color: rgb(241, 0, 0);
+         border-radius: 10px;
+         padding: 2px;
+    }
+}
+
+
+.resultTeamAB{
+    width: 100%;
+    height: 15%;
+    background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
+     backdrop-filter: blur(20px);
+     -webkit-backdrop-filter: blur(20px); / Safari/iOS */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    gap: 10px;
+    color: white;
+
+    font-family: "Akaya Kanadaka", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    }
+
+
+ .resultButtonPush{
+    width: 100%;
+    height: 15%;
+   background: rgba(8, 10, 11, 0.90); /* Semi-transparent /
+     backdrop-filter: blur(20px);
+     -webkit-backdrop-filter: blur(20px); / Safari/iOS */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+
+    margin-top: 10px;
+ }
+
+ .resultButtonPush{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+ }
+ .resultButtonPush button{
+    width: 50%;
+    height: 55%;
     border-radius: 10px;
     border: none;
     font-size: 30px;

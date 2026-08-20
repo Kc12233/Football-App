@@ -44,10 +44,8 @@ const LoginYourAccount = () => {
         })
 
         if(LoginRequest.statusText ==="OK"){
- 
-         localStorage.setItem("_login","true")
-
-         
+  
+      
           dispatch({
             type : "ADD_ID",
             payload :{
@@ -85,6 +83,10 @@ const LoginYourAccount = () => {
        
       }
 
+     finally{
+            setLoading(false)
+            setLoadingUsp(true)
+     }
   
 
     

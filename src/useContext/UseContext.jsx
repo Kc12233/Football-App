@@ -6,7 +6,7 @@ import axiosClient from "../axios/endPoint"
 import { useNavigate } from "react-router-dom"
 import socket from "../socketClient/socket"
 import { RefreshTheToken } from "../RefreshToken/RefrshTokenL"
-
+// off the connection tcp socket when the user leave the sessions
 
 const initialState = {
     id : null,
@@ -39,7 +39,7 @@ const UseContext = ({children}) => {
             else{
          
                await axiosClient.post("/api/deleteCookies")
-               
+              
                Nav("/login")
             }
 
@@ -69,11 +69,10 @@ const UseContext = ({children}) => {
                   
   
                  const {data}= await axiosClient.get("/getmydata")
-                 console.log(data)
-                 if(data){
-                  Nav("/myTeam")
-                 }
-                
+              
+                // console.log(data)
+                 // fix issues here
+                 
    
   
   
@@ -94,11 +93,14 @@ const UseContext = ({children}) => {
 
 
          }catch(err){
+            console.log(err.message ,"temp")
           
             if(err.message==="missing Token"  ||err.message =="expired Refresh token")
             {
                await axiosClient.post("/api/deleteCookies")
+                
                Nav("/login")
+             
             }
          }
       

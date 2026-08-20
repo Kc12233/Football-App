@@ -2,42 +2,115 @@ import React, { useEffect, useState } from 'react'
 import "./MyTeam.css"
 import { useNavigate } from 'react-router-dom'
 import Card from '../Component/Card'
-import { Cone, Plus, X } from 'lucide-react'
+import { ArrowBigDown, ArrowLeft, ArrowRight, Bitcoin, Compass, Cone, Plus, RefreshCcw, Search, X } from 'lucide-react'
 import { useAuth } from '../useContext/UseContext'
 import { RefreshTheToken } from '../RefreshToken/RefrshTokenL'
 import axiosClient from '../axios/endPoint'
 import socket from '../socketClient/socket'
+import Online from '../online/Online'
+import CardSkeleton from '../Loader/CardSkeleton'
 
 const MyTeam = () => {
-    
+    const [off,SetOff] = useState(true)
+    const {Username , id ,img , dispatch}  =  useAuth()  
+    const [rooms,SetRooms] = useState([])
+    const [isFollowRoom,SetisFollowRoom]= useState(false)
+    const [Skeleton,SetSkeleten] = useState(false)
+
+   
+
+
     const Nav = useNavigate()
     const HandelReturn = () =>{
-        Nav("/login")
+      if(id)return
+      Nav("/login")
+
+  
     }
 
     
-    const [off,SetOff] = useState(true)
-    const {Username , id ,img , dispatch}  =  useAuth()  
+
 
  
- 
-  const testRequest = async () => {
-
-
+   useEffect(()=>{
+   
+   
+    const getMyRooms =async ()=>{
+      
+      try{
+      SetSkeleten(true)
+      const roomListResponse =  await axiosClient.get("/room/getrooms")
        
-         const data = await axiosClient.post("/test")
-
-
-         console.log(data)
-
+      if(roomListResponse.data.err =="you dont follow any rooms ."){
+        console.log("no room ")
+        SetisFollowRoom(true)
+        SetSkeleten(false)
+        
+      }
+   
+      if(roomListResponse?.data?.info?.length==0){
+        SetisFollowRoom(true)
+          SetSkeleten(false)
+        
+        
+      }
+      if(roomListResponse?.data?.info?.length>0){
+         console.log(roomListResponse.data)
+         SetisFollowRoom(false)
+         SetRooms(roomListResponse.data.info)
+         SetSkeleten(false)
+      }
+      
     
 
+      }catch(err){
+        SetSkeleten(false)
+        console.log(err.message)
+      }
+      finally{
+         SetSkeleten(false)
+      }
 
+    }
 
- 
-   }
-
+    getMyRooms()
+   },[])
+  
+  const HandelRefresh = async()=> {
+      try{
+      SetSkeleten(true)
+      const roomListResponse =  await axiosClient.get("/room/getrooms")
+    
+      if(roomListResponse.data.err =="you dont follow any rooms ."){
+        console.log("no room ")
+        SetisFollowRoom(true)
+        SetSkeleten(false)
+      }
    
+      if(roomListResponse?.data?.info?.length==0){
+        SetisFollowRoom(true)
+         SetSkeleten(false)
+        
+        
+      }
+      if(roomListResponse?.data?.info?.length>0){
+         console.log(roomListResponse.data)
+         SetisFollowRoom(false)
+         SetSkeleten(false)
+         SetRooms(roomListResponse.data.info)
+      }
+      
+    
+
+      }catch(err){
+          SetSkeleten(false)
+        console.log(err.message)
+      }
+      finally{
+          SetSkeleten(false)
+      }
+
+  }
 
 
 
@@ -55,24 +128,52 @@ const MyTeam = () => {
                 <h1 onClick={()=>console.log("my id",id)}>My Team</h1>
             </div>
             <div className="seconde-nav-option">
+                
                  <img src="./myTeamIcon/search.svg" onPointerUp={()=>testRequest()} alt="" />
                  <img src="./myTeamIcon/Option.svg" alt="" />
+              
             </div>
         </div>
-
-
-      
 
       </div>
 
 
+         <div className="refresh_option">
+                  <img src="./myTeamIcon/refresh.svg" alt="" onClick={()=>HandelRefresh()} />
+         </div>
+
+
         <div className="Session-groups">
-           
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
+            
+                    {isFollowRoom ?
+                     <div className="youdontfollowroomdes">
+                      <img src='/myteamPics/no-follow/picnofollow.png' alt='loading'/>
+ 
+                      <h1>you don't follow </h1>
+                      <h2>any room yet</h2>
+                      <p>Follow rooms to get updates ,matches alertes</p>
+                      <p>and announcements in one place</p>
+                      <button className='button-session-desing'><Compass/> Explore rooms<ArrowRight/></button>
+                     </div>
+                    
+                    
+                    : 
+                    Skeleton? 
+                    <>  
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    </>
+                    :
+                      rooms.map((item)=><Card info={item} key={item.roomId}/>)
+                    }
        
          
         </div>
@@ -113,7 +214,7 @@ const MyTeam = () => {
 </div>
 
 
-
+<Online/>
     </div>
   )
 }

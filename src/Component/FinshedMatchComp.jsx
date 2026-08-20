@@ -48,8 +48,8 @@ const getResult =  () =>{
             <div className="box_container__">
 
                 {
-                    TeamB.map((item)=> <div  
-                    key={item.log} 
+                    TeamB.map((item,index)=> <div  
+                    key={index} 
                     onClick={()=>setPicTeamB(item)}
                     
                     className="card_finished_match">

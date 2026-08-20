@@ -5,9 +5,24 @@ import FinshedMatches  from "../Component/FinshedMatches.jsx"
 import axios from "axios"
 import  use from "react"
 import { Cone, Plus, User } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../useContext/UseContext.jsx'
+import PendingAcceptPersonRequest from './PendingAcceptPersonRequest.jsx'
+import axiosClient from '../axios/endPoint.js'
+import Online from '../online/Online.jsx'
 const Scores = () => {
+
+ const {Username , id ,img , dispatch}  =  useAuth()  
+ const idRoom   = useParams()
+  const Nav = useNavigate()
+
+  useEffect(()=>{
+    if(!idRoom.roomId)
+    {
+      Nav("/login")
+    }
+  },[])
+
  const [card,SetCard] = useState([
 
     {
@@ -43,23 +58,15 @@ const Scores = () => {
 
  const [off,Setoff] = useState(false)
 
- const Nav = useNavigate()
+ 
 
  
-    const {Username , id ,img , dispatch}  =  useAuth()  
-    
-    useEffect(()=>{
-      if(Username && id && img){
-        console.log(Username , id , img)
-      }
 
-      console.log("hey this Component Mount")
-    },[])
+ 
 
     
+ 
 
-
-    
   return (
 
       <> 
@@ -86,7 +93,7 @@ const Scores = () => {
           </div>
 
 
-          <div className="notifaction">
+          <div className="notifaction"   onClick={()=>{  Nav(`/home/notifaction/${idRoom.roomId}`)}}>
                 <span className="popup"></span>
                 <img src="/myTeamIcon/notifaction.svg"/>
           </div>
@@ -94,7 +101,7 @@ const Scores = () => {
           <div className="avatar-user">
           <span className="popup2"></span>
 
-            <img src={img ? img : "/testpic/man2."}/>
+            <img src={img ? img : "/testpic/man2.png"}/>
               
 
           </div>
@@ -105,6 +112,7 @@ const Scores = () => {
       <div className="watchScreen">
 
         <img src="/testpic/bbg.png" loading="lazy" />
+        
           {
             TheirNews?   
               <>
@@ -116,7 +124,7 @@ const Scores = () => {
 
              
              
-             :  <p className="description">Welcome back ,{Username&& Username} 👋  </p> 
+             :  <p className="description">Welcome back , {Username&& Username} 👋  </p> 
           }
          
           <h1 className="description-mem">Play football.</h1>
@@ -143,12 +151,28 @@ const Scores = () => {
 
  
      <div className="viewAllList">
-      
-       <CardInfo teamFull = {false}/>
-       <CardInfo teamFull = {false}/>
-       <CardInfo teamFull = {true}/>
+{/*       
+       <CardInfo teamFull = {false}/>   */}
 
-      
+
+    <div className="no-matches">
+      <div className="logo-matches-assets">
+        <img src='/nomatchesAssets/ball.png'/>
+      </div>
+      <div className="content-matches-assets">
+        <h1>No upcoming matches</h1>
+        <h3>The pitch is waiting for your.⚽ </h3>
+        <h3>Create a match and invite your freinds to play.</h3>
+      </div>
+
+      <div className="content-button">
+        <button><Plus size={20}/> Create Match</button>
+      </div>
+    </div>
+
+
+
+
       </div>  
 
 
@@ -177,19 +201,7 @@ const Scores = () => {
 
 
 
- {/* <div className="FinshedMatches">
-      <div className="left">
-        <h1>Football news</h1>
-      </div>
-          
-         <div className="right">
-           <span>view all</span>
-         <img src="/myTeamIcon/view1.svg" loading="lazy"/>
-         </div>
-
-          <img src='/navbaricon/Koura.png'/>
-           
- </div> */}
+ 
 
  
       
@@ -248,30 +260,14 @@ const Scores = () => {
 
 
 <div className="container-card-choise">
-
-{
-  off  &&
-
-  
-
-  <div className="container-starts">
-  <div id="stars"></div>
-  <div id="stars2"></div>
-  <div id="stars3"></div>
-  <div></div>
-</div>
-
-
-}
+ 
 
 
 
 
 
 
-  <div
-  
- onClick={()=>Nav("/CreateMatche")}
+  <div onClick={()=>Nav("/CreateMatche")}
   className={`first_box_1 bounce ${off && 'disable'}`}>
     <h1>Match</h1>
     <img src='/myTeamIcon/blueCreate.svg'/>
@@ -288,12 +284,11 @@ const Scores = () => {
   </div>
 </div>
 
+ 
+</div>
 
 
-
-
-     </div>
-
+<Online/>
      
 
       </>

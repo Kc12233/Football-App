@@ -1,3 +1,48 @@
+
+
+
+
+
+
+.Avtar{
+    width: 30px;
+    height: 30px;
+    background-color: #0D120D;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(7px);
+}
+.Avtar img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    border-radius: 100%;
+    
+}
+ 
+.insideAvtar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 100;
+    color: lch(88.12% 0.01 296.81);
+  
+
+
+}
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 800px) {
 .Avtar{
     width: 30px;

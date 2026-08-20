@@ -1,0 +1,68 @@
+.online{
+    width: 100px;
+    height: 30px;
+   
+    position: absolute;
+    bottom: 0;
+    right:   0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(8, 10, 11, 0.90); /* Semi-transparent */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Safari/iOS */
+    border: 1px solid rgb(104, 103, 103);
+}
+.online h1 {
+    font-size: 15px;
+    color: rgb(167, 164, 164);
+    font-weight:500;
+    
+}
+
+.onlineIcon {
+    width: 11px;
+    height: 11px;
+    background: #39ff88;
+    border-radius: 50%;
+    transform: translateY(0.3px) scale(1);
+    box-shadow:
+        0 0 5px rgba(57, 255, 136, 0.8),
+        0 0 10px rgba(57, 255, 136, 0.45);
+    
+}
+.bounceOnline {
+    animation: sexyOnline 1.6s ease-in-out infinite;
+}
+
+@keyframes sexyOnline {
+    0%, 100% {
+        transform: translateY(0.3px) scale(1);
+        box-shadow:
+            0 0 5px rgba(57, 255, 136, 0.7),
+            0 0 10px rgba(57, 255, 136, 0.35);
+    }
+
+    12% {
+        transform: translateY(0.3px) scale(1.18);
+        box-shadow:
+            0 0 7px rgba(57, 255, 136, 1),
+            0 0 16px rgba(57, 255, 136, 0.6);
+    }
+
+    24% {
+        transform: translateY(0.3px) scale(1);
+    }
+
+    36% {
+        transform: translateY(0.3px) scale(1.1);
+        box-shadow:
+            0 0 6px rgba(57, 255, 136, 0.9),
+            0 0 13px rgba(57, 255, 136, 0.5);
+    }
+
+    48% {
+        transform: translateY(0.3px) scale(1);
+    }
+}

@@ -39,14 +39,26 @@ const Nav = useNavigate()
             <img src='/myTeamIcon/setting.svg'/>
         </div>
 
-        <div className="Profile_pictuer_image_content">
+{/* premuim_user */}
+        <div className="Profile_pictuer_image_content ">
+            <div className="myWallet">
+                <div className="avtar_wallet">
+                     <img src='/public/profile_icon/coins/2.png'/>
+                </div>
+                <h1>100k</h1>
+            </div>
             
             <div className="profile_left">
                 
-               
-                <div className="Avart_profile">
-                    <img src='/Memories/IMG_6190.jpg'/>
+               {/* premium_ring */}
+                <div className="Avart_profile ">
+                   
+                    <img src='/Memories/a.jpg' className='imgPictuerAvatar'/>
                     <small className={online ?'online_profile_user' : 'offline_profile_user'}></small>
+            
+                     {/* <div className="crown_avatar ">
+                        <img src='/PremuimUser/crown.png'  />
+                     </div> */}
                 </div>
              
             </div>

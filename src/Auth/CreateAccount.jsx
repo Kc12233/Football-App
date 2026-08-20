@@ -194,8 +194,7 @@ const CreateAccount = () => {
        
     }
 
-
-    useEffect(()=>{
+  useEffect(()=>{
         const HandelRefeshPage  =(e)=>{
             e.preventDefault()
  
